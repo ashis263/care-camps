@@ -25,6 +25,7 @@ const Navbar = () => {
                   toast.onmouseleave = Swal.resumeTimer;
                 }
               });
+              localStorage.removeItem('access token');
               Toast.fire({
                 icon: "success",
                 title: "Log out successful!"
