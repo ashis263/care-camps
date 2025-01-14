@@ -7,7 +7,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Finlandica : "Finlandica"
+        finlandica : "Finlandica",
+        roboto: 'Roboto'
+      },
+      colors: {
+        primary: '#198298',
+        secondary: '#dc404e'
       }
     },
   },
