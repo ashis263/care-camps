@@ -32,10 +32,10 @@ const Navbar = () => {
                             {navlinks}
                         </ul>
                     </div>
-                    <button className="btn btn-ghost text-xl text-secondary hover:bg-transparent p-0 mr-10">
-                        <img src={icon} className='w-10 sm:w-12' alt="" />
-                        <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold'><span className='text-primary'>Care</span>Camps</h2>
-                    </button>
+                    <Link to="/" className="btn btn-ghost text-xl hover:bg-transparent p-0 mr-10">
+                                    <img src={icon} className='w-10 sm:w-12' alt="" />
+                        <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold'><span className=''>Care</span>Camps</h2>
+                    </Link>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             {navlinks}
@@ -43,7 +43,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-sm bg-primary text-gray-50 hover:bg-primary">Join Us</a>
+                    <Link to='/auth/login' className="btn btn-sm bg-primary text-gray-50 hover:bg-primary rounded-none">Join Us</Link>
                     <div className="relative dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost p-0">
                             <img src={icon} className='w-8 sm:w-10 rounded-xl border' alt="" />
