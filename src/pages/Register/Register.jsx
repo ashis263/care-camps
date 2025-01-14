@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import UseAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
@@ -13,6 +14,7 @@ const Register = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user, signUp, updateUser, setUser } = useAuth();
     const location = useLocation();
+    const axiosPublic = UseAxiosPublic();
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -38,9 +40,17 @@ const Register = () => {
         if (result.data.success) {
             const imageURL = result.data.data.url;
             signUp(data.email, data.password)
-                .then(() => {
+                .then((res) => {
                     updateUser(data.name, imageURL)
                         .then(() => {
+                            const newUser = {
+                                name: res.user.displayName,
+                                email: res.user.email,
+                                photoURL: res.user.photoURL,
+                                createdAt: res.user.metadata.creationTime,
+                                lastLogin: res.user.metadata.lastSignInTime
+                            };
+                            axiosPublic.put('/users', newUser);
                             reset();
                             Toast.fire({
                                 icon: "success",
@@ -50,7 +60,7 @@ const Register = () => {
                                 ...user,
                                 displayName: data.name,
                                 photoURL: imageURL
-                            })
+                            });
                         })
                         .catch(err => {
                             Toast.fire({

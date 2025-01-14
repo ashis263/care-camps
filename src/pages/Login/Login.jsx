@@ -5,6 +5,7 @@ import Social from "../../components/Social/Social";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import UseAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
@@ -12,6 +13,7 @@ const Login = () => {
     const { user, logIn } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const location = useLocation();
+    const axiosPublic = UseAxiosPublic();
     if(user){
         return <Navigate to={location.state ? location.state : '/'} />
     }
@@ -30,7 +32,19 @@ const Login = () => {
     const submitForm = data => {
         logIn(data.email, data.password)
         .then(res => {
-            console.log(res);
+            const loggedOnUser = res.user;
+            const data = {
+                name: loggedOnUser.displayName,
+                email: loggedOnUser.email,
+                photoURL: loggedOnUser.photoURL,
+                createdAt: loggedOnUser.metadata.creationTime,
+                lastLogin: loggedOnUser.metadata.lastSignInTime
+              };
+              axiosPublic.put('/users', data);
+              Toast.fire({
+                icon: "error",
+                title: 'Log in sucessful!'
+              });
         })
         .catch(err => {
               Toast.fire({

@@ -27,7 +27,7 @@ const Navbar = () => {
               });
               Toast.fire({
                 icon: "success",
-                title: "Signed out successfully"
+                title: "Log out successful!"
               });
         })
     }
@@ -76,7 +76,7 @@ const Navbar = () => {
                                 <Link to='/auth/login' className="btn btn-sm bg-primary text-gray-50 hover:bg-primary rounded-none">Join Us</Link>
                                 :
                                 <div className="relative dropdown">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost p-0">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-transparent p-0">
                                         <img src={user.photoURL} className='w-8 sm:w-10 rounded-3xl border' alt="" />
                                     </div>
                                     <ul
