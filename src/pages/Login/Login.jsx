@@ -1,15 +1,44 @@
 import { useState } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import Social from "../../components/Social/Social";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
     const handleShowPass = () => setIsPassShowing(!isPassShowing);
+    const { user, logIn } = useAuth();
     const { register, handleSubmit, reset } = useForm();
+    const location = useLocation();
+    if(user){
+        return <Navigate to={location.state ? location.state : '/'} />
+    }
+    
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
     const submitForm = data => {
-        console.log(data);
+        logIn(data.email, data.password)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+              Toast.fire({
+                icon: "error",
+                title: err.code
+              });
+        });
+        reset();
     }
     return (
         <div>
@@ -36,7 +65,7 @@ const Login = () => {
                             }
                         </div>
                         <label className="label flext flex-col items-start gap-1 sm:gap-2">
-                            <p>Don&apos;t have an account? <Link to="/auth/register" className="underline">Create one</Link></p>
+                            <p>Don&apos;t have an account? <Link to="/auth/register" className="underline">Register</Link></p>
                         </label>
                     </div>
                     <div className="form-control mt-6">
