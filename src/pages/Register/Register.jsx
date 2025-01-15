@@ -13,7 +13,7 @@ const Register = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
     const handleShowPass = () => setIsPassShowing(!isPassShowing);
     const { register, handleSubmit, reset } = useForm();
-    const { user, signUp, updateUser, setUser } = useAuth();
+    const { user, signUp, updateUser, setUser, setIsTokenSet } = useAuth();
     const location = useLocation();
     const axiosPublic = UseAxiosPublic();
     const Toast = Swal.mixin({
@@ -42,8 +42,14 @@ const Register = () => {
             const imageURL = result.data.data.url;
             signUp(data.email, data.password)
                 .then((res) => {
+                    reset();
                     updateUser(data.name, imageURL)
                         .then(() => {
+                            setUser({
+                                ...res.user,
+                                displayName: data.name,
+                                photoURL: imageURL
+                            });
                             const newUser = {
                                 name: res.user.displayName,
                                 email: res.user.email,
@@ -57,17 +63,12 @@ const Register = () => {
                                 const token = res.data.token;
                                 if(token){
                                     localStorage.setItem('access token', token);
-                                }
+                                    setIsTokenSet(true);
+                                };
                             });
-                            reset();
                             Toast.fire({
                                 icon: "success",
                                 title: 'Registered successfully!'
-                            });
-                            setUser({
-                                ...user,
-                                displayName: data.name,
-                                photoURL: imageURL
                             });
                         })
                         .catch(err => {

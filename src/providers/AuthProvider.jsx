@@ -10,7 +10,8 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [ user, setUser ] = useState(null);
-    const [ isLoading, setIsLoading ] = useState(true)
+    const [ isLoading, setIsLoading ] = useState(true);
+    const [ isTokenSet, setIsTokenSet ] = useState(false);
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
         setIsLoading(true);
@@ -23,6 +24,8 @@ const AuthProvider = ({ children }) => {
                 setIsLoading(false);
             }else{
                 setUser(null);
+                localStorage.removeItem('access token');
+                setIsTokenSet(false);
                 setIsLoading(false);
             }
             return () => unsubscribe();
@@ -53,7 +56,9 @@ const AuthProvider = ({ children }) => {
         signUp,
         updateUser,
         logIn,
-        logOut
+        logOut,
+        isTokenSet,
+        setIsTokenSet
     }
     return (
         <AuthContext.Provider value={authData}>

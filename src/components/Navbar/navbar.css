@@ -1,6 +1,6 @@
 a.active{
     color: #198298 !important;
     font-weight: bolder;
-    text-decoration: underline;
+    text-decoration: underline !important;
     background-color: transparent !important;
 }

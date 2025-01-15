@@ -2,11 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import icon from '../../assets/icon.png';
 import './navbar.css';
 import useAuth from '../../hooks/useAuth';
+import useAdmin from '../../hooks/useAdmin';
 import Spinner from "../Spinner/Spinner";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
     const { user, isLoading, logOut } = useAuth();
+    const [ isAdmin ] = useAdmin();
     const navlinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/camps'>Available Camps</NavLink></li>
@@ -78,13 +80,13 @@ const Navbar = () => {
                                 :
                                 <div className="relative dropdown">
                                     <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-transparent p-0">
-                                        <img src={user.photoURL} className='w-8 sm:w-10 rounded-3xl border' alt="" />
+                                        <img src={user.photoURL} className='w-8 aspect-square sm:w-10 rounded-3xl border' alt="" />
                                     </div>
                                     <ul
                                         tabIndex={0}
                                         className="relative right-0 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-32 p-2 shadow">
                                         <p className="text-center font-bold mb-2">{user.displayName}</p>
-                                        <Link to='/dashboard' className="btn btn-xs bg-primary text-gray-50 hover:bg-primary ">Dashboard</Link>
+                                        <Link to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/analytics'} className="btn btn-xs bg-primary text-gray-50 hover:bg-primary ">Dashboard</Link>
                                         <button onClick={handleLogout} className="btn btn-xs bg-primary text-gray-50 hover:bg-primary ">Logout</button>
                                     </ul>
                                 </div>

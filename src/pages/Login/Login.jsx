@@ -11,7 +11,7 @@ import 'animate.css';
 const Login = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
     const handleShowPass = () => setIsPassShowing(!isPassShowing);
-    const { user, logIn } = useAuth();
+    const { user, logIn, setIsTokenSet } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const location = useLocation();
     const axiosPublic = UseAxiosPublic();
@@ -45,9 +45,9 @@ const Login = () => {
               axiosPublic.post('/auth', { name: loggedOnUser.displayName, email: loggedOnUser.email })
               .then(res => {
                 const token = res.data.token;
-                console.log(token);
                 if(token){
                     localStorage.setItem('access token', token);
+                    setIsTokenSet(true);
                 }
               })
               Toast.fire({
