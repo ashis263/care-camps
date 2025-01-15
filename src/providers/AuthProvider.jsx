@@ -21,6 +21,9 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             if(currentUser){
                 setUser(currentUser);
+                if(localStorage.getItem('access token')){
+                    setIsTokenSet(true);
+                }
                 setIsLoading(false);
             }else{
                 setUser(null);

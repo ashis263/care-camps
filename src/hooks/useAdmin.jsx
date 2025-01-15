@@ -10,7 +10,7 @@ const UseAdmin = () => {
         enabled: isTokenSet,
         queryFn: async () => {
             const result = await axiosPrivate.get(`/admin/?email=${user.email}`);
-            return result.data?.role === 'admin';
+            return result.data?.role === 'admin' ? true : false;
         }
     });
     return [isAdmin, isAdminLoading];
