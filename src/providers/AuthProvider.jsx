@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
             }
             return () => unsubscribe();
         })
-    }, []);
+    }, [user]);
 
     const signUp = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);

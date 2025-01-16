@@ -104,7 +104,7 @@ const DashboardLayout = () => {
                     <h2 className='text-2xl xl:text-3xl font-mono font-bold'>{isAdmin ? "Organizer" : "Participant"}<br />Dashboard</h2>
                 </div>
             </div>
-            <div className='sm:m-10 my-10 sm:w-72 xl:4/5'>
+            <div className='sm:m-10 my-10 sm:w-72 xl:4/5 grow'>
                 <Outlet></Outlet>
             </div>
         </div>

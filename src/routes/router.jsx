@@ -62,15 +62,15 @@ const router = createBrowserRouter([
             },
             {
                 path: 'addCamp',
-                element: <AdminProfile><AddCamp></AddCamp></AdminProfile>
+                element: <AdminRoute><AddCamp></AddCamp></AdminRoute>
             },
             {
                 path: 'manageCamps',
-                element: <AdminProfile><ManageCamps></ManageCamps></AdminProfile>
+                element: <AdminRoute><ManageCamps></ManageCamps></AdminRoute>
             },
             {
                 path: 'manageRegisteredCamps',
-                element: <AdminProfile><ManageRegisteredCamps></ManageRegisteredCamps></AdminProfile>
+                element: <AdminRoute><ManageRegisteredCamps></ManageRegisteredCamps></AdminRoute>
             }
         ])
     }
