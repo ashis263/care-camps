@@ -61,8 +61,8 @@ const DashboardLayout = () => {
         <div onClick={handleLogoutClick} className='sm:btn sm:btn-ghost hover:bg-transparent sm:text-secondary max-sm:text-secondary flex items-center gap-5'><FaSignInAlt /> Logout</div>
     </div>
     return (
-        <div className='flex max-sm:flex-col max-sm:w-4/5 mx-auto max-sm:pt-2'>
-            <aside className="min-h-lvh sm:w-[28%] xl:w-1/5 bg-slate-200 relative max-sm:hidden">
+        <div className='flex max-sm:flex-col max-sm:w-4/5 mx-auto max-sm:pt-2 justify-end'>
+            <aside className="min-h-lvh sm:w-1/4 bg-slate-200 fixed left-0 z-10 max-sm:hidden">
                 <div className='flex items-center py-10 pl-2 gap-2 mb-10 lg:mb-16'>
                     <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-xl' alt="" />
                     <h2 className='text-2xl xl:text-3xl font-mono font-bold'>{isAdmin ? "Organizer" : "Participant"}<br />Dashboard</h2>
@@ -82,7 +82,7 @@ const DashboardLayout = () => {
             </aside>
             <div className='flex justify-between sm:hidden'>
                 <div className="dropdown dropdown-hover">
-                    <div tabIndex={0} role="button" className="btn m-1 btn-ghost text-xl p-0">
+                    <div tabIndex={0} role="button" className="btn my-1 btn-ghost text-xl p-0">
                         <FaBars />
                     </div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
@@ -104,7 +104,7 @@ const DashboardLayout = () => {
                     <h2 className='text-2xl xl:text-3xl font-mono font-bold'>{isAdmin ? "Organizer" : "Participant"}<br />Dashboard</h2>
                 </div>
             </div>
-            <div className='sm:m-10 my-10 sm:w-72 xl:4/5 grow'>
+            <div className='max-sm:my-10 max-sm:w-full sm:w-3/4 sm:p-10'>
                 <Outlet></Outlet>
             </div>
         </div>

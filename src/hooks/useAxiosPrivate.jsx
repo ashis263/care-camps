@@ -25,7 +25,6 @@ const UseAxiosPrivate = () => {
     }, error => {
         const status = error.response.status;
         if(status === 401 || status === 403){
-            console.log(1);
             	logOut();
                 navigate('/');
                 const Toast = Swal.mixin({
