@@ -1,6 +1,6 @@
 const Spinner = () => {
     return (
-        <div className='w-lvh h-lvh flex items-center justify-center'>
+        <div className='w-lvh h-lvh flex items-center justify-center bg-slate-50'>
             <span className="loading loading-ring loading-lg text-8xl text-primary"></span>
         </div>
     );

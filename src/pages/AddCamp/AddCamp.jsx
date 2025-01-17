@@ -5,7 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import DateTimePicker from 'react-datetime-picker';
 import { useState } from 'react';
-import momemt from 'moment';
+import moment from 'moment';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -47,7 +47,7 @@ const AddCamp = () => {
             const camp = {
                 photoURL: imageURL,
                 ...otherData,
-                dateTime: momemt(new Date(dateTime), "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ").toISOString(),
+                dateTime: moment(new Date(dateTime), "ddd MMM DD YYYY HH:mm:ss [GMT]ZZ").toISOString(),
                 addedBy: user.email
             };
             axiosPrivate.post(`/camps/?email=${user.email}`, camp)

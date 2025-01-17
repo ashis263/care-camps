@@ -14,11 +14,18 @@ import AddCamp from '../pages/AddCamp/AddCamp';
 import ManageCamps from '../pages/ManageCamps/ManageCamps';
 import ManageRegisteredCamps from '../pages/ManageRegisteredCamps/ManageRegisteredCamps';
 import AdminRoute from "./AdminRoute";
+import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout></MainLayout>
+        element: <MainLayout></MainLayout>,
+        children: ([
+            {
+                path: 'camps',
+                element: <AvailableCamps></AvailableCamps>
+            }
+        ])
     },
     {
         path: "auth",
