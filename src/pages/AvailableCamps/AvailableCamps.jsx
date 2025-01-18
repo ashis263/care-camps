@@ -1,15 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import Camp from "../../components/Camp/Camp";
-import usePages from "../../hooks/usePages";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RiLayoutGrid2Fill, RiLayoutGridFill } from "react-icons/ri";
 import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
+import Pagination from "../../components/Pagination/Pagination";
 
 const AvailableCamps = () => {
     const axiosPublic = UseAxiosPublic();
     const [activePage, setActivePage] = useState(1);
-    const [showing, setShowing] = useState();
     const [isLayoutToggled, setIsLayoutToggled] = useState(false);
     const [searchKey, setSearchKey] = useState('');
     const [sortBy, setSortBy] = useState('_id');
@@ -20,19 +19,10 @@ const AvailableCamps = () => {
             return result.data;
         }
     });
-    const { paginationData, isPagesLoading } = usePages('/camps/count', 6);
-    const { pages, totalData } = paginationData;
-    const handlePagination = page => {
-        if (page > 0 && page <= pages.length) {
-            setActivePage(page);
-            refetch();
-        }
-    };
-    useEffect(() => {
-        const skippped = (activePage - 1) * 6;
-        const remaining = totalData - skippped;
-        setShowing(`${totalData === 0 ? 0 : skippped + 1} to ${remaining < 6 ? totalData : skippped + 6}`)
-    }, [activePage, totalData]);
+    const handleSearch = ( e ) => {
+        setSearchKey(e.target.value);
+        setActivePage(1);
+    }
     return (
         <div>
             <h2 className='font-bold text-3xl sm:text-5xl text-primary max-lg:text-center lg:text-end drop-shadow'>Explore available camps to join now</h2>
@@ -43,7 +33,7 @@ const AvailableCamps = () => {
                     }
                 </div>
                 <label className="input input-sm input-bordered flex items-center gap-2">
-                    <input onChange={(e) => setSearchKey(e.target.value)} type="text" className="grow" placeholder="Search" />
+                    <input onChange={handleSearch} type="text" className="grow" placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -77,18 +67,7 @@ const AvailableCamps = () => {
                     camps.map(camp => <Camp key={camp._id} camp={camp}></Camp>)
                 }
             </div>
-            <div className="flex justify-between items-center py-5 lg:py-10">
-                <p>Showing {showing} of {totalData}</p>
-                <div className="space-x-1">
-                    <button onClick={() => handlePagination(activePage - 1)} className={`btn btn-xs text-gray-400`}>Prev</button>
-                    {
-                        !isPagesLoading
-                        &&
-                        pages.map(page => <button key={page} onClick={() => handlePagination(page)} className={`btn btn-xs text-gray-400 ${activePage === page ? "text-slate-50 bg-primary" : ""}`}>{page}</button>)
-                    }
-                    <button onClick={() => handlePagination(activePage + 1)} className={`btn btn-xs text-gray-400`}>Next</button>
-                </div>
-            </div>
+            <Pagination link={`/camps/count/?searchKey=${searchKey}`} count={6} refetch={refetch} activePage={activePage} setActivePage={setActivePage}></Pagination>
         </div>
     );
 }
