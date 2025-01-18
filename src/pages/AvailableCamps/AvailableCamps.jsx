@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import Camp from "../../components/Camp/Camp";
-import UsePages from "../../hooks/usePages";
+import usePages from "../../hooks/usePages";
 import { useEffect, useState } from "react";
 import { RiLayoutGrid2Fill, RiLayoutGridFill } from "react-icons/ri";
+import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
 
 const AvailableCamps = () => {
     const axiosPublic = UseAxiosPublic();
@@ -19,7 +20,7 @@ const AvailableCamps = () => {
             return result.data;
         }
     });
-    const { paginationData, isPagesLoading } = UsePages('/camps/count', 6);
+    const { paginationData, isPagesLoading } = usePages('/camps/count', 6);
     const { pages, totalData } = paginationData;
     const handlePagination = page => {
         if (page > 0 && page <= pages.length) {
@@ -30,7 +31,7 @@ const AvailableCamps = () => {
     useEffect(() => {
         const skippped = (activePage - 1) * 6;
         const remaining = totalData - skippped;
-        setShowing(`${skippped + 1} to ${remaining < 6 ? totalData : skippped + 6}`)
+        setShowing(`${totalData === 0 ? 0 : skippped + 1} to ${remaining < 6 ? totalData : skippped + 6}`)
     }, [activePage, totalData]);
     return (
         <div>
@@ -67,9 +68,7 @@ const AvailableCamps = () => {
             {
                 isPending
                 &&
-                <div className="flex justify-center w-1/2 mx-auto h-80 items-center">
-                    <span className="loading loading-ring loading-lg text-8xl text-primary"></span>
-                </div>
+                <SpinnerSmall></SpinnerSmall>
             }
             <div className={`grid grid-cols-1 sm:grid-cols-2 ${isLayoutToggled ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-5 lg:gap-20 py-5 lg:py-10`}>
                 {

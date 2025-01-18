@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Social = () => {
-  const { handleGoogleLogin, setIsTokenSet } = useAuth();
+  const { handleGoogleLogin } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const axiosPublic = UseAxiosPublic();
@@ -32,14 +32,6 @@ const Social = () => {
           lastLogin: user.metadata.lastSignInTime
         };
         axiosPublic.put('/users', data);
-        axiosPublic.post('auth', { name: user.displayName, email: user.email})
-        .then(res => {
-          const token = res.data.token;
-          if(token){
-            localStorage.setItem('access token', token);
-            setIsTokenSet(true);
-          };
-        });
         Toast.fire({
           icon: "success",
           title: "Log in successful!"

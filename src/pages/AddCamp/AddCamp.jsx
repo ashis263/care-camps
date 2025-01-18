@@ -69,10 +69,11 @@ const AddCamp = () => {
     }
     return (
         <div className="">
-            <div>
+            <div className="mb-5 lg:mb-16">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Add Camp</h2>
             </div>
             <form onSubmit={handleSubmit(submitForm)} className="sm:w-3/4 mx-auto my-10 shadow-md shadow-primary p-10 rounded-lg">
+                <h3 className="text-2xl text-center font-bold mb-5 font-mono text-slate-700">Add a new camp</h3>
                 <div className="form-control">
                     <label className="label">
                         <span className={`label-text`}>Camp Name</span>

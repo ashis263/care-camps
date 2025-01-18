@@ -13,7 +13,7 @@ const Register = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
     const handleShowPass = () => setIsPassShowing(!isPassShowing);
     const { register, handleSubmit, reset } = useForm();
-    const { user, signUp, updateUser, setUser, setIsTokenSet } = useAuth();
+    const { user, signUp, updateUser, setUser } = useAuth();
     const location = useLocation();
     const axiosPublic = UseAxiosPublic();
     const Toast = Swal.mixin({
@@ -58,14 +58,6 @@ const Register = () => {
                                 lastLogin: res.user.metadata.lastSignInTime
                             };
                             axiosPublic.put('/users', newUser);
-                            axiosPublic.post('auth', {name: data.name, email: data.email})
-                            .then(res => {
-                                const token = res.data.token;
-                                if(token){
-                                    localStorage.setItem('access token', token);
-                                    setIsTokenSet(true);
-                                };
-                            });
                             Toast.fire({
                                 icon: "success",
                                 title: 'Registered successfully!'

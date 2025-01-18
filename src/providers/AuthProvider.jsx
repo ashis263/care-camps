@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import UseAxiosPublic from '../hooks/useAxiosPublic';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -13,17 +14,22 @@ const AuthProvider = ({ children }) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ isTokenSet, setIsTokenSet ] = useState(false);
     const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = UseAxiosPublic();
     const handleGoogleLogin = () => {
-        setIsLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
     useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             if(currentUser){
                 setUser(currentUser);
-                if(localStorage.getItem('access token')){
+                axiosPublic.post('/auth', { name: currentUser.displayName, email: currentUser.email })
+              .then(res => {
+                const token = res.data.token;
+                if(token){
+                    localStorage.setItem('access token', token);
                     setIsTokenSet(true);
                 }
+              })
                 setIsLoading(false);
             }else{
                 setUser(null);
@@ -33,7 +39,7 @@ const AuthProvider = ({ children }) => {
             }
             return () => unsubscribe();
         })
-    }, [user]);
+    }, []);
 
     const signUp = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -60,8 +66,7 @@ const AuthProvider = ({ children }) => {
         updateUser,
         logIn,
         logOut,
-        isTokenSet,
-        setIsTokenSet
+        isTokenSet
     }
     return (
         <AuthContext.Provider value={authData}>

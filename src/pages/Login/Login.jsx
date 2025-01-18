@@ -11,7 +11,7 @@ import 'animate.css';
 const Login = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
     const handleShowPass = () => setIsPassShowing(!isPassShowing);
-    const { user, logIn, setIsTokenSet } = useAuth();
+    const { user, logIn } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const location = useLocation();
     const axiosPublic = UseAxiosPublic();
@@ -42,14 +42,6 @@ const Login = () => {
                 lastLogin: loggedOnUser.metadata.lastSignInTime
               };
               axiosPublic.put('/users', data);
-              axiosPublic.post('/auth', { name: loggedOnUser.displayName, email: loggedOnUser.email })
-              .then(res => {
-                const token = res.data.token;
-                if(token){
-                    localStorage.setItem('access token', token);
-                    setIsTokenSet(true);
-                }
-              })
               Toast.fire({
                 icon: "success",
                 title: 'Log in sucessful!'
