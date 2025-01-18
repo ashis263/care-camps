@@ -27,7 +27,7 @@ const router = createBrowserRouter([
                 element: <AvailableCamps></AvailableCamps>
             },
             {
-                path: 'camps/:id',
+                path: 'camp-details/:id',
                 element: <CampDetails></CampDetails>,
                 loader: ({params}) => fetch(`http://localhost:5000/camps/${params.id}`)
             }

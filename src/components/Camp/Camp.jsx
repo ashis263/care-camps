@@ -25,7 +25,7 @@ const Camp = ({ camp }) => {
                 <p> <MdGroups3 className='inline -mt-[4px] text-secondary text-lg mr-2' />{participantCount} Joined</p>
                 <p className='text-justify'><FaInfo className='inline -mt-[4px] text-secondary mr-2' />{description}</p>
             </div>
-                <Link to={`/camps/${_id}`} className="btn btn-sm btn-wide my-2 bg-cyan-700 text-slate-50 hover:bg-primary">Details</Link>
+                <Link to={`/camp-details/${_id}`} className="btn btn-sm btn-wide my-2 bg-cyan-700 text-slate-50 hover:bg-primary">Details</Link>
         </div>
     );
 };

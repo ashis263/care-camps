@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { IoLocation } from "react-icons/io5";
 import { FaClinicMedical, FaInfo } from "react-icons/fa";
 import { FaPerson } from "react-icons/fa6";
@@ -8,10 +8,21 @@ import { MdGroups3 } from "react-icons/md";
 import moment from 'moment';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import UseAxiosPrivate from "../../hooks/useAxiosPrivate";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
 
 const CampDetails = () => {
+    const [open, setOpen] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
     const camp = useLoaderData();
     const { user } = useAuth();
+    const navigate = useNavigate();
+    const currentLocation = useLocation();
+    const axiosPrivate = UseAxiosPrivate();
     const { _id, name, photoURL, professionalName, location, fees, dateTime, participantCount, description } = camp;
     const dateTimeString = moment(dateTime).format('ddd MMM DD YYYY,  h:mm:ss A');
     const Toast = Swal.mixin({
@@ -27,11 +38,33 @@ const CampDetails = () => {
     });
     const handleJoin = () => {
         if (!user) {
-            Toast.fire({
-                icon: "error",
-                title: 'Please login to join!'
-            });
+            navigate('/auth/login', { state: currentLocation.pathname });
         }
+        setOpen(!open);
+    };
+    const submitForm = async (data) => {
+        axiosPrivate.put(`/registeredCamps/?campId=${_id}&email=${user?.email}`, {...data, campId: _id})
+            .then(res => {
+                if(res.data.upsertedId){
+                    Toast.fire({
+                        icon: "success",
+                        title: "Joined successfully."
+                    });
+                }else{
+                    Toast.fire({
+                        icon: "warning",
+                        title: "Already Joined!"
+                    });
+                }
+                reset();
+                setOpen(!open);
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: "error",
+                    title: err.message
+                });
+            })
     }
     return (
         <div className="shadow">
@@ -53,6 +86,79 @@ const CampDetails = () => {
                 </div>
                 <button onClick={handleJoin} className={`btn w-full max-lg:btn-sm mt-10 bg-primary hover:bg-primary text-white hover:border-none`}>Join Now</button>
             </div>
+            <Modal open={open} onClose={() => setOpen(!open)} center>
+                <form className='p-5' onSubmit={handleSubmit(submitForm)}>
+                    <h2 className='text-primary text-center px-28 font-bold text-2xl lg:text-3xl '>Please provide some information before joining</h2>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Camp Name</span>
+                        </label>
+                        <input type="text" placeholder="Camp Name" value={name} {...register('campName', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Camp Fees</span>
+                        </label>
+                        <input type="number" placeholder="Camp Fees" value={fees} {...register('fees', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Camp Location</span>
+                        </label>
+                        <input type="text" placeholder="Camp Location" value={location} {...register('location', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Healthcare Professional Name</span>
+                        </label>
+                        <input type="text" placeholder="Healthcare Professional Name" value={professionalName} {...register('professionalName', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Participant Name</span>
+                        </label>
+                        <input type="text" placeholder="Camp Name" value={user?.displayName} {...register('participantName', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Participant Email</span>
+                        </label>
+                        <input type="email" placeholder="Participant Email" value={user?.email} {...register('participantEmail', { required: true })} className="input max-lg:input-sm input-bordered" readOnly />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Age</span>
+                        </label>
+                        <input type="number" placeholder="Age" {...register('age', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Phone Number</span>
+                        </label>
+                        <input type="number" placeholder="Phone Number" {...register('phoneNumber', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Gender</span>
+                        </label>
+                        <select className="select max-lg:select-sm select-bordered" {...register('gender', { required: true })} required>
+                            <option></option>
+                            <option value="name">Male</option>
+                            <option value="fees">Female</option>
+                            <option value="participantCount">Other</option>
+                        </select>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className={`label-text`}>Emergency Contact</span>
+                        </label>
+                        <input type="text" placeholder="Emergency Contact" {...register('emergencyContact', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    </div>
+                    <div className="form-control mt-6">
+                        <button className="btn max-lg:btn-sm btn-outline text-primary lg:text-xl">Join Now</button>
+                    </div>
+                </form>
+            </Modal>
         </div>
     );
 }
