@@ -43,7 +43,7 @@ const CampDetails = () => {
         setOpen(!open);
     };
     const submitForm = async (data) => {
-        axiosPrivate.put(`/registeredCamps/?campId=${_id}&email=${user?.email}`, {...data, campId: _id})
+        axiosPrivate.put(`/registeredCamps/?campId=${_id}&email=${user?.email}`, {...data, campId: _id, photoURL})
             .then(res => {
                 if(res.data.upsertedId){
                     Toast.fire({
@@ -143,9 +143,9 @@ const CampDetails = () => {
                         </label>
                         <select className="select max-lg:select-sm select-bordered" {...register('gender', { required: true })} required>
                             <option></option>
-                            <option value="name">Male</option>
-                            <option value="fees">Female</option>
-                            <option value="participantCount">Other</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div className="form-control">

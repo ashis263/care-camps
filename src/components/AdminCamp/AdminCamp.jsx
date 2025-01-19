@@ -94,7 +94,7 @@ const AdminCamp = ({ camp, refetch }) => {
                 })
                 .catch(err => {
                     Toast.fire({
-                        icon: "err",
+                        icon: "error",
                         title: err.message
                     });
                 });
