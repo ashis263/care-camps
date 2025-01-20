@@ -12,7 +12,7 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 
 
-const AdminCamp = ({ camp, refetch }) => {
+const AdminCamp = ({ camp, refetch, isDeleted, setIsDeleted }) => {
     const [open, setOpen] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const { _id, name, dateTime, location, professionalName, description, participantCount, fees } = camp;
@@ -36,6 +36,7 @@ const AdminCamp = ({ camp, refetch }) => {
                     axiosPrivate.delete(`/delete-camp/${id}/?email=${user.email}`)
                         .then(res => {
                             if (res.data.deletedCount) {
+                                setIsDeleted(isDeleted)
                                 refetch();
                                 Swal.fire({
                                     title: "Deleted!",

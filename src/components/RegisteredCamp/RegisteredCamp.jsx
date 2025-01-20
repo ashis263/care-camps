@@ -9,13 +9,15 @@ import { useForm } from 'react-hook-form';
 import { IoCloseOutline } from "react-icons/io5";
 import { VscFeedback } from "react-icons/vsc";
 import ReactStarsRating from 'react-awesome-stars-rating';
+import Payment from '../Payment/Payment';
 
 
 const RegisteredCamp = ({ camp, refetch }) => {
     const [open, setOpen] = useState(false);
-    const [ rating, setRating ] = useState(0);
+    const [openPayment, setOpenPayment] = useState(false);
+    const [rating, setRating] = useState(0);
     const { register, handleSubmit, reset } = useForm();
-    const { _id, campName, fees, professionalName, } = camp;
+    const { _id, campId, campName, fees, professionalName, } = camp;
     const { user } = useAuth();
     const axiosPrivate = UseAxiosPrivate();
     const handleCancel = () => {
@@ -56,12 +58,12 @@ const RegisteredCamp = ({ camp, refetch }) => {
         }
     });
     const submitForm = async (data) => {
-        if(rating === 0) {
+        if (rating === 0) {
             Toast.fire({
                 icon: "warning",
                 title: 'Please add rating!'
             });
-        }else{
+        } else {
             const updated = {
                 campId: _id,
                 campName,
@@ -72,28 +74,35 @@ const RegisteredCamp = ({ camp, refetch }) => {
                 }
             };
             axiosPrivate.put(`/reviews/?campId=${_id}&email=${user?.email}`, updated)
-            .then(res => {
-                if(res.data.upsertedId){
+                .then(res => {
+                    if (res.data.upsertedId) {
+                        Toast.fire({
+                            icon: "success",
+                            title: "Review added successfully."
+                        });
+                    } else {
+                        Toast.fire({
+                            icon: "warning",
+                            title: "Already reviewed!"
+                        });
+                    }
+                    reset();
+                    setOpen(!open);
+                })
+                .catch(err => {
                     Toast.fire({
-                        icon: "success",
-                        title: "Review added successfully."
+                        icon: "error",
+                        title: err.message
                     });
-                }else{
-                    Toast.fire({
-                        icon: "warning",
-                        title: "Already reviewed!"
-                    });
-                }
-                reset();
-                setOpen(!open);
-            })
-            .catch(err => {
-                Toast.fire({
-                    icon: "error",
-                    title: err.message
-                });
-            })
+                })
         }
+    };
+    const closePayment = () => {
+        setOpenPayment(!openPayment);
+        Toast.fire({
+            icon: "error",
+            title: 'Payment canceled!'
+        });
     }
     return (
         <tr>
@@ -103,10 +112,10 @@ const RegisteredCamp = ({ camp, refetch }) => {
             <td>
                 {
                     camp?.paymentStatus
-                    ?
-                    <button className='btn btn-xs btn-outline' disabled>Paid</button>
-                    :
-                    <button className='btn btn-xs btn-outline text-primary'>Pay</button>
+                        ?
+                        <button className='btn btn-xs btn-outline' disabled>Paid</button>
+                        :
+                        <button onClick={setOpenPayment} className='btn btn-xs btn-outline text-primary'>Pay</button>
                 }
             </td>
             <td>
@@ -117,19 +126,19 @@ const RegisteredCamp = ({ camp, refetch }) => {
             <td>
                 {
                     camp?.paymentStatus
-                    ?
-                    <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><IoCloseOutline /></button>
-                    :
-                    <button onClick={handleCancel} className='btn btn-xs text-lg btn-ghost text-secondary'><IoCloseOutline /></button>
+                        ?
+                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><IoCloseOutline /></button>
+                        :
+                        <button onClick={handleCancel} className='btn btn-xs text-lg btn-ghost text-secondary'><IoCloseOutline /></button>
                 }
             </td>
             <td>
                 {
                     camp?.paymentStatus && camp.status
-                    ?
-                    <button onClick={() => setOpen(!open)} className='btn btn-xs text-lg btn-ghost text-primary'><VscFeedback/></button>
-                    :
-                    <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><VscFeedback/></button>
+                        ?
+                        <button onClick={() => setOpen(!open)} className='btn btn-xs text-lg btn-ghost text-primary'><VscFeedback /></button>
+                        :
+                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><VscFeedback /></button>
                 }
             </td>
             <Modal open={open} onClose={() => setOpen(!open)} center>
@@ -141,6 +150,10 @@ const RegisteredCamp = ({ camp, refetch }) => {
                         <button className="btn max-lg:btn-sm btn-outline text-primary lg:text-xl">Submit</button>
                     </div>
                 </form>
+            </Modal>
+            <Modal open={openPayment} onClose={closePayment} center>
+                <h2 className='text-primary text-center px-28 font-bold text-2xl lg:text-3xl sm:px-40'>Payment</h2>
+                <Payment campName={campName} refetch={refetch} campId={campId} fees={fees} openPayment={openPayment} setOpenPayment={setOpenPayment}></Payment>
             </Modal>
         </tr>
     );
