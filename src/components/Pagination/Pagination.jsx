@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import UsePages from '../../hooks/usePages';
 
 
-const Pagination = ({ link, count, refetch, activePage, setActivePage, isDeleted }) => {
+const Pagination = ({ link, count, refetch, activePage, setActivePage }) => {
     const [showing, setShowing] = useState();
-    const { paginationData, isPagesLoading, refetch: rePagination } = UsePages(link, count);
+    const { paginationData, isPagesLoading } = UsePages(link, count);
     const { pages, totalData } = paginationData;
     const handlePagination = page => {
         if (page > 0 && page <= pages.length) {
@@ -14,12 +14,11 @@ const Pagination = ({ link, count, refetch, activePage, setActivePage, isDeleted
         }
     };
     useEffect(() => {
-        rePagination();
         const skippped = (activePage - 1) * count;
         const remaining = totalData - skippped;
         setShowing(`${totalData === 0 ? 0 : skippped + 1} to ${remaining < count ? totalData : skippped + count}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activePage, totalData, isDeleted]);
+    }, [activePage, totalData]);
     return (
         <div className="flex justify-between items-center py-5 lg:py-10">
             <p>Showing {showing} of {totalData}</p>

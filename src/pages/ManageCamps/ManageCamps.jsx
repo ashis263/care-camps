@@ -11,12 +11,11 @@ const ManageCamps = () => {
     const axiosPrivate = useAxiosPrivate();
     const [searchKey, setSearchKey] = useState('');
     const [activePage, setActivePage] = useState(1);
-    const [isDeleted, setIsDeleted] = useState(false);
-    console.log(isDeleted);
+    const [totalDeleted, setTotalDeleted] = useState(0);
     const { data: camps = [], isPending, refetch } = useQuery({
         queryKey: [user.email, searchKey, activePage, 'camps'],
         queryFn: async () => {
-            const result = await axiosPrivate.get(`/adminCamps/?email=${user.email}&page=${activePage}&searchKey=${searchKey}`);
+            const result = await axiosPrivate.get(`/adminCamps/?email=${user.email}&page=${activePage}&searchKey=${searchKey}&deleted=${totalDeleted}`);
             return result.data;
         }
     });
@@ -59,7 +58,7 @@ const ManageCamps = () => {
                         {
                             isPending
                             ||
-                            camps.map(camp => <AdminCamp key={camp._id} isDeleted={isDeleted} setIsDeleted={setIsDeleted} camp={camp} refetch={refetch} ></AdminCamp>)
+                            camps.map(camp => <AdminCamp key={camp._id} camp={camp} refetch={refetch} setActivePage={setActivePage} totalDeleted={totalDeleted} setTotalDeleted={setTotalDeleted} ></AdminCamp>)
                         }
                     </tbody>
                 </table>
@@ -71,7 +70,7 @@ const ManageCamps = () => {
                     }
                 </div>
             </div>
-            <Pagination link={`/adminCamps/count/?email=${user.email}&searchKey=${searchKey}`} count={10} isDeleted={isDeleted} refetch={refetch} activePage={activePage} setActivePage={setActivePage}></Pagination>
+            <Pagination link={`/adminCamps/count/?email=${user.email}&searchKey=${searchKey}&deleted=${totalDeleted}`} count={10} refetch={refetch} activePage={activePage} setActivePage={setActivePage}></Pagination>
         </div>
     );
 }

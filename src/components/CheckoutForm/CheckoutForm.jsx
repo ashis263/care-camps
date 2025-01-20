@@ -69,7 +69,7 @@ const CheckoutForm = ({ fees, openPayment, setOpenPayment, campName, campId, ref
                     title: confirmPaymentError.message
                 });
                 paymentData.paymentStatus = `Canceled- ${confirmPaymentError.code}`;
-                paymentData.confirmationSatus = false;
+                paymentData.confirmationStatus = false;
                 paymentData.transactionId = null;
                 axiosPrivate.post(`/payments/?campId=${campId}&email=${user.email}`, paymentData);
             } else {
@@ -80,9 +80,9 @@ const CheckoutForm = ({ fees, openPayment, setOpenPayment, campName, campId, ref
                         title: `Payment successful.`
                     });
                     paymentData.paymentStatus = `Paid with ${paymentIntent.payment_method_types[0]}`;
-                    paymentData.confirmationSatus = true;
+                    paymentData.confirmationStatus = true;
                     paymentData.transactionId = paymentIntent.id;
-                    axiosPrivate.put(`/payments/?campId=${campId}&email=${user.email}`, paymentData)
+                    axiosPrivate.post(`/payments/?campId=${campId}&email=${user.email}`, paymentData)
                     axiosPrivate.patch(`/registeredCamps/payment/?campId=${campId}&email=${user.email}`)
                     .then(res => {
                         if(res.data.modifiedCount){

@@ -22,7 +22,6 @@ const UsePages = (link, itemsPerPage) => {
                 return { pages: plusOneArr, totalData: result.data.count};
             }
         });
-        console.log(paginationData);
         return { paginationData, isPagesLoading: isPending, refetch };
 }
 
