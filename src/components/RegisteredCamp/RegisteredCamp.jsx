@@ -122,7 +122,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
             </td>
             <td>
                 {
-                    camp?.status ? 'Confirmed' : 'Pending'
+                    camp?.confirmationStatus ? 'Confirmed' : 'Pending'
                 }
             </td>
             <td>
@@ -136,7 +136,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
             </td>
             <td>
                 {
-                    camp?.paymentStatus && camp.status
+                    camp?.paymentStatus && camp.confirmationStatus
                         ?
                         <button onClick={() => setOpen(!open)} className='btn btn-xs text-lg btn-ghost text-primary'><VscFeedback /></button>
                         :
