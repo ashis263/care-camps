@@ -16,12 +16,17 @@ import ManageRegisteredCamps from '../pages/ManageRegisteredCamps/ManageRegister
 import AdminRoute from "./AdminRoute";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import CampDetails from "../pages/CampDetails/CampDetails";
+import Home from "../pages/Home/Home";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
         children: ([
+            {
+                path: "/",
+                element: <Home></Home>
+            },
             {
                 path: 'camps',
                 element: <AvailableCamps></AvailableCamps>
