@@ -1,6 +1,7 @@
 import 'animate.css';
 import Navbar from '../components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 
 const MainLayout = () => {
     return (
@@ -9,6 +10,7 @@ const MainLayout = () => {
             <div className='w-11/12 mx-auto py-5 lg:py-10'>
                 <Outlet></Outlet>
             </div>
+            <Footer></Footer>
         </div>
     );
 }
