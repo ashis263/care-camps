@@ -18,7 +18,7 @@ const Analytics = () => {
     const { data: camps = [] } = useQuery({
         queryKey: [user.email, 'camps'],
         queryFn: async () => {
-            const result = await axiosPrivate.get(`/registeredCamps/?email=${user.email}`);
+            const result = await axiosPrivate.get(`/registeredCamps/all/?email=${user.email}`);
             return result.data;
         }
     });
@@ -36,7 +36,7 @@ const Analytics = () => {
                             <stop offset="95%" stopColor="#198298" stopOpacity={0} />
                         </linearGradient>
                     </defs>
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="campName" />
                     <Tooltip />
                     <YAxis dataKey="fees" />
                     <CartesianGrid strokeDasharray="3 3" />

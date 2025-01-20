@@ -22,6 +22,7 @@ const RegisteredCamps = () => {
     const handleSearch = ( e ) => {
         setSearchKey(e.target.value);
         setActivePage(1);
+        refetch();
     }
     return (
         <div>

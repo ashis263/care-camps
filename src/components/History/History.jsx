@@ -7,7 +7,7 @@ const History = ({ payment }) => {
             <td>{payment.campName}</td>
             <td>${payment.amount}</td>
             <td>{payment.paymentStatus}</td>
-            <td>{!payment.confirmationStatus ? 'Not Paid' : 'Paid'}</td>
+            <td>{!payment.confirmationStatus ? 'NA' : 'Paid'}</td>
             <td>{!payment.transactionId ? 'NA' : payment.transactionId}</td>
         </tr>
     );

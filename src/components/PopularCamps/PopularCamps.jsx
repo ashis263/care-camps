@@ -13,9 +13,8 @@ const PopularCamps = () => {
             return (await result).data;
         }
     });
-    console.log(camps);
     return (
-        <div className="sm:w-4/5 mx-auto">
+        <div className="mx-auto">
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary text-center'>Popular Camps</h2>
             </div>
@@ -25,7 +24,7 @@ const PopularCamps = () => {
                     &&
                     <SpinnerSmall></SpinnerSmall>
                 }
-                <div className={`grid grid-cols-1 sm:grid-cols-2 p-5 lg:p-10 lg:grid-cols-3 gap-5 lg:gap-20 py-5 lg:py-10`}>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 p-2 lg:grid-cols-3 gap-5 lg:gap-20 py-5 lg:py-10`}>
                     {
                         !isPending
                         &&
