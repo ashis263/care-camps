@@ -69,11 +69,11 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
             const updated = {
                 campId: _id,
                 campName,
-                reviewBy: user.email,
-                feedBack: {
-                    rating,
-                    feedback: data.feedback
-                }
+                reviewByUser: user.email,
+                reviewBy: user.displayName,
+                userPhotoURL: user.photoURL,
+                rating,
+                feedback: data.feedback
             };
             axiosPrivate.put(`/reviews/?campId=${_id}&email=${user?.email}`, updated)
                 .then(res => {
