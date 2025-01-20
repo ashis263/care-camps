@@ -12,7 +12,7 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 import Payment from '../Payment/Payment';
 
 
-const RegisteredCamp = ({ camp, refetch }) => {
+const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted }) => {
     const [open, setOpen] = useState(false);
     const [openPayment, setOpenPayment] = useState(false);
     const [rating, setRating] = useState(0);
@@ -35,6 +35,8 @@ const RegisteredCamp = ({ camp, refetch }) => {
                     axiosPrivate.delete(`/cancel-registration/${_id}/?email=${user.email}`)
                         .then(res => {
                             if (res.data.deletedCount) {
+                                setTotalDeleted(totalDeleted + 1)
+                                setActivePage(1);
                                 refetch();
                                 Swal.fire({
                                     title: "Canceled!",
@@ -162,7 +164,10 @@ const RegisteredCamp = ({ camp, refetch }) => {
 
 RegisteredCamp.propTypes = {
     camp: PropTypes.object.isRequired,
-    refetch: PropTypes.func.isRequired
+    refetch: PropTypes.func.isRequired,
+    totalDeleted: PropTypes.number.isRequired,
+    setActivePage: PropTypes.func.isRequired,
+    setTotalDeleted: PropTypes.func.isRequired
 };
 
 

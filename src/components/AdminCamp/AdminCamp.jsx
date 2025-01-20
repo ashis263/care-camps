@@ -108,7 +108,7 @@ const AdminCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted
             <td>{dateTime}</td>
             <td>{location}</td>
             <td>{professionalName}</td>
-            <td className='flex gap-5 items-center'>
+            <td className='flex gap-5 items-center mt-[10px]'>
                 <button onClick={() => setOpen(!open)}>
                     <MdEditNote className='text-xl text-primary' />
                 </button>

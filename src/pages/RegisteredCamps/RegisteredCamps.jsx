@@ -11,10 +11,11 @@ const RegisteredCamps = () => {
     const axiosPrivate = useAxiosPrivate();
     const [searchKey, setSearchKey] = useState('');
     const [activePage, setActivePage] = useState(1);
+    const [totalDeleted, setTotalDeleted] = useState(0);
     const { data: camps = [], isPending, refetch } = useQuery({
         queryKey: [user.email, searchKey, activePage, 'camps'],
         queryFn: async () => {
-            const result = await axiosPrivate.get(`/registeredCamps/?email=${user.email}&page=${activePage}&searchKey=${searchKey}`);
+            const result = await axiosPrivate.get(`/registeredCamps/?email=${user.email}&page=${activePage}&searchKey=${searchKey}&deleted=${totalDeleted}`);
             return result.data;
         }
     });
@@ -59,7 +60,7 @@ const RegisteredCamps = () => {
                         {
                             isPending
                             ||
-                            camps.map(camp => <RegisteredCamp key={camp._id} camp={camp} refetch={refetch} ></RegisteredCamp>)
+                            camps.map(camp => <RegisteredCamp key={camp._id} camp={camp} refetch={refetch} setActivePage={setActivePage} totalDeleted={totalDeleted} setTotalDeleted={setTotalDeleted} ></RegisteredCamp>)
                         }
                     </tbody>
                 </table>
@@ -71,7 +72,7 @@ const RegisteredCamps = () => {
                     }
                 </div>
             </div>
-            <Pagination link={`/registeredCamps/count/?email=${user.email}&searchKey=${searchKey}`} count={10} refetch={refetch} activePage={activePage} setActivePage={setActivePage}></Pagination>
+            <Pagination link={`/registeredCamps/count/?email=${user.email}&searchKey=${searchKey}&deleted=${totalDeleted}`} count={10} refetch={refetch} activePage={activePage} setActivePage={setActivePage}></Pagination>
         </div>
     );
 }
