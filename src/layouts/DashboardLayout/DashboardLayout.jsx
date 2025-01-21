@@ -12,6 +12,7 @@ import useAuth from '../../hooks/useAuth';
 import useAdmin from '../../hooks/useAdmin';
 import Swal from 'sweetalert2';
 import Spinner from '../../components/Spinner/Spinner';
+import 'animate.css';
 
 
 const DashboardLayout = () => {
@@ -61,7 +62,7 @@ const DashboardLayout = () => {
         <div onClick={handleLogoutClick} className='sm:btn sm:btn-ghost hover:bg-transparent sm:text-secondary max-sm:text-secondary flex items-center gap-5'><FaSignInAlt /> Logout</div>
     </div>
     return (
-        <div className='flex max-sm:flex-col max-sm:w-4/5 mx-auto max-sm:pt-2 justify-end'>
+        <div className='flex max-sm:flex-col max-sm:w-4/5 mx-auto max-sm:pt-2 justify-end animate__animated animate__fadeIn'>
             <aside className="min-h-lvh sm:w-1/4 bg-slate-200 fixed left-0 z-10 max-sm:hidden">
                 <div className='flex items-center py-10 pl-2 gap-2 mb-10 lg:mb-16'>
                     <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-xl' alt="" />

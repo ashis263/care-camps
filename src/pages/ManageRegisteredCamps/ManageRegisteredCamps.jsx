@@ -5,6 +5,8 @@ import { useState } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
 import MangeRegisteredCamp from "../../components/MangeRegisteredCamp/MangeRegisteredCamp";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const ManageRegisteredCamps = () => {
     const [searchKey, setSearchKey] = useState('');
@@ -25,7 +27,10 @@ const ManageRegisteredCamps = () => {
         refetch();
     }
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Manage Registered Camps</title>
+            </Helmet>
             <div className="mb-5 lg:mb-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Manage Registered Camps</h2>
             </div>

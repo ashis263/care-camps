@@ -9,6 +9,8 @@ import moment from 'moment';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const AddCamp = () => {
     const [dateTime, setDateTime] = useState();
@@ -17,18 +19,18 @@ const AddCamp = () => {
     const axiosPrivate = useAxiosPrivate();
     const imageHostingApi = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`;
     const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 2000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
     const submitForm = async (data) => {
-        if(!dateTime){
+        if (!dateTime) {
             return Toast.fire({
                 icon: "warning",
                 title: "Please pick date and time!"
@@ -51,24 +53,27 @@ const AddCamp = () => {
                 addedBy: user.email
             };
             axiosPrivate.post(`/camps/?email=${user.email}`, camp)
-            .then(res => {
-                if(res.data.insertedId){
+                .then(res => {
+                    if (res.data.insertedId) {
+                        Toast.fire({
+                            icon: "success",
+                            title: "Camp added successfully!"
+                        });
+                    }
+                })
+                .catch(err => {
                     Toast.fire({
-                        icon: "success",
-                        title: "Camp added successfully!"
+                        icon: "error",
+                        title: err.code
                     });
-                }
-            })
-            .catch(err => {
-                Toast.fire({
-                    icon: "error",
-                    title: err.code
-                });
-            })
+                })
         }
     }
     return (
-        <div className="">
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Add Camp</title>
+            </Helmet>
             <div className="mb-5 lg:mb-16">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Add Camp</h2>
             </div>

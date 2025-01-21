@@ -96,6 +96,7 @@ const CheckoutForm = ({ fees, openPayment, setOpenPayment, campName, campId, ref
     }
     return (
         <form onSubmit={handleSubmit}>
+            <p className='text-center text-lg font-mono'>Total fees: <span className='text-secondary font-extrabold'>${fees}</span></p>
             <CardElement
                 className="pt-10 px-5"
                 options={{

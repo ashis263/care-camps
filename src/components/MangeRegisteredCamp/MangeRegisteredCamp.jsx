@@ -38,7 +38,7 @@ const MangeRegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTo
             });
     };
     const handleConfirm = () => {
-        axiosPrivate.patch(`/registeredCamps/admin/status/?campId=${campId}&email=${participantEmail}`)
+        axiosPrivate.patch(`/registeredCamps/admin/status/?campId=${campId}&email=${user.email}&participantEmail=${participantEmail}`)
                     .then(res => {
                         if(res.data.modifiedCount){
                             refetch();

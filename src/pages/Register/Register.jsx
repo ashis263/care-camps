@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
@@ -80,6 +81,9 @@ const Register = () => {
     }
     return (
         <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className="flex flex-col mb-10">
                 <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto bg-white p-10 rounded-xl shadow">
                     <p className="text-center text-2xl font-semibold">Register</p>

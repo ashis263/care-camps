@@ -10,7 +10,7 @@ const ErrorPage = () => {
         <div className="animate__animated animate__fadeIn h-[100vh] pb-5 max-sm:text-center ga-5 flex flex-col justify-center items-center ">
             <HelmetProvider>
                 <Helmet>
-                    <title>Error 404!</title>
+                    <title>404!</title>
                 </Helmet>
             <div className="w-4/5 mx-auto">
                 <Lottie className='sm:block w-4/5 mx-auto sm:w-72 lg:w-96 max-sm:mb-5' animationData={error} loop={true} />

@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [isPassShowing, setIsPassShowing] = useState(false);
@@ -15,10 +16,10 @@ const Login = () => {
     const { register, handleSubmit, reset } = useForm();
     const location = useLocation();
     const axiosPublic = UseAxiosPublic();
-    if(user){
+    if (user) {
         return <Navigate to={location.state ? location.state : '/'} />
     }
-    
+
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -26,37 +27,40 @@ const Login = () => {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
         }
-      });
+    });
     const submitForm = data => {
         logIn(data.email, data.password)
-        .then(res => {
-            const loggedOnUser = res.user;
-            const data = {
-                name: loggedOnUser.displayName,
-                email: loggedOnUser.email,
-                photoURL: loggedOnUser.photoURL,
-                createdAt: loggedOnUser.metadata.creationTime,
-                lastLogin: loggedOnUser.metadata.lastSignInTime
-              };
-              axiosPublic.put('/users', data);
-              Toast.fire({
-                icon: "success",
-                title: 'Log in sucessful!'
-              });
-        })
-        .catch(err => {
-              Toast.fire({
-                icon: "error",
-                title: err.code
-              });
-        });
+            .then(res => {
+                const loggedOnUser = res.user;
+                const data = {
+                    name: loggedOnUser.displayName,
+                    email: loggedOnUser.email,
+                    photoURL: loggedOnUser.photoURL,
+                    createdAt: loggedOnUser.metadata.creationTime,
+                    lastLogin: loggedOnUser.metadata.lastSignInTime
+                };
+                axiosPublic.put('/users', data);
+                Toast.fire({
+                    icon: "success",
+                    title: 'Log in sucessful!'
+                });
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: "error",
+                    title: err.code
+                });
+            });
         reset();
     }
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="flex flex-col animate__animated animate__fadeIn">
                 <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto bg-white p-10 rounded-xl shadow">
                     <p className="text-center text-2xl font-semibold mb-5">Welcome back!</p>

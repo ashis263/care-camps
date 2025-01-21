@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const axiosPublic = UseAxiosPublic();
     const handleGoogleLogin = () => {
+        setIsLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
     useEffect(()=> {

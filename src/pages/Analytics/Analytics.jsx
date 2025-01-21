@@ -11,6 +11,8 @@ import {
 } from "recharts";
 import UseAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const Analytics = () => {
     const axiosPrivate = UseAxiosPrivate();
@@ -23,7 +25,10 @@ const Analytics = () => {
         }
     });
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Analytics</title>
+            </Helmet>
             <div className="mb-10 lg:mb-20">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Statistics</h2>
             </div>

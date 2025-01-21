@@ -5,6 +5,8 @@ import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
 import AdminCamp from "../../components/AdminCamp/AdminCamp";
 import { useState } from "react";
 import Pagination from "../../components/Pagination/Pagination";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const ManageCamps = () => {
     const { user } = useAuth();
@@ -19,12 +21,15 @@ const ManageCamps = () => {
             return result.data;
         }
     });
-    const handleSearch = ( e ) => {
+    const handleSearch = (e) => {
         setSearchKey(e.target.value);
         setActivePage(1);
     }
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Manage Camps</title>
+            </Helmet>
             <div className="mb-5 lg:mb-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Manage Camps</h2>
             </div>

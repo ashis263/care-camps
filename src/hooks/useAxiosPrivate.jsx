@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://carecamps-server.vercel.app'
 })
 
 const UseAxiosPrivate = () => {
@@ -26,6 +26,7 @@ const UseAxiosPrivate = () => {
         const status = error.response.status;
         if(status === 401 || status === 403){
             	logOut();
+                localStorage.removeItem('access token');
                 navigate('/');
                 const Toast = Swal.mixin({
                     toast: true,

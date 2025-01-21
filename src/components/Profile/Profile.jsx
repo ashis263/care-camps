@@ -43,7 +43,7 @@ const AdminProfile = () => {
             };
             updateUser(data.name, imageURL)
                 .then(() => {
-                    setUser();
+                    setUser({ ...user, ...updatedData });
                     Toast.fire({
                         icon: "success",
                         title: 'Information updated successfully!'
@@ -68,16 +68,16 @@ const AdminProfile = () => {
                 <div className=''>
                     <div className='flex flex-col gap-14 sm:place-items-end justify-center'>
                         <div className='sm:text-end'>
-                        <h2 className='text-primary font-bold text-2xl lg:text-3xl'>{user.displayName}</h2>
-                        <p className='text-gray-700 font-semibold text-xl font-mono'>{isAdmin ? 'Organizer' : 'Participant'}</p>
+                            <h2 className='text-primary font-bold text-2xl lg:text-3xl'>{user.displayName}</h2>
+                            <p className='text-gray-700 font-semibold text-xl font-mono'>{isAdmin ? 'Organizer' : 'Participant'}</p>
                         </div>
                         <p>Contact: <span className='font-medium'>{user.email}</span></p>
                     </div>
                 </div>
             </div>
-            
+
             <div className='flex justify-center'>
-            <button onClick={() => setOpen(!open)} className="btn w-full btn-outline mt-10 max-lg:btn-sm sm:w-3/4 text-primary">Update Information</button>
+                <button onClick={() => setOpen(!open)} className="btn w-full btn-outline mt-10 max-lg:btn-sm sm:w-3/4 text-primary">Update Information</button>
             </div>
             <Modal open={open} onClose={() => setOpen(!open)} center>
                 <h2 className='text-primary font-bold text-2xl lg:text-3xl px-10'>Update Information</h2>

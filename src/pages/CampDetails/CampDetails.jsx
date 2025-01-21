@@ -13,6 +13,8 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 
 const CampDetails = () => {
@@ -43,14 +45,14 @@ const CampDetails = () => {
         setOpen(!open);
     };
     const submitForm = async (data) => {
-        axiosPrivate.put(`/registeredCamps/?campId=${_id}&email=${user?.email}`, {...data, campId: _id, photoURL})
+        axiosPrivate.put(`/registeredCamps/?campId=${_id}&email=${user?.email}`, { ...data, campId: _id, photoURL })
             .then(res => {
-                if(res.data.upsertedId){
+                if (res.data.upsertedId) {
                     Toast.fire({
                         icon: "success",
                         title: "Joined successfully."
                     });
-                }else{
+                } else {
                     Toast.fire({
                         icon: "warning",
                         title: "Already Joined!"
@@ -67,8 +69,11 @@ const CampDetails = () => {
             })
     }
     return (
-        <div className="shadow">
-            <h2 className='font-bold text-3xl sm:text-5xl text-primary max-lg:text-center lg:text-center drop-shadow'>{name}</h2>
+        <div className="animate__animated animate__fadeIn shadow">
+            <Helmet>
+                <title>Camp Details</title>
+            </Helmet>
+            <h2 className='animate__animated animate__fadeIn font-bold text-3xl sm:text-5xl text-primary max-lg:text-center lg:text-center drop-shadow'>{name}</h2>
             <div className='w-3/5 mx-auto flex flex-col justify-between p-5 items-center gap-2 self-stretch rounded-xl my-5 sm:my-10'>
                 <div className="w-full text-center space-y-5">
                     <div className="flex justify-center">

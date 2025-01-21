@@ -5,6 +5,8 @@ import { useState } from "react";
 import { RiLayoutGrid2Fill, RiLayoutGridFill } from "react-icons/ri";
 import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
 import Pagination from "../../components/Pagination/Pagination";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const AvailableCamps = () => {
     const axiosPublic = UseAxiosPublic();
@@ -19,12 +21,15 @@ const AvailableCamps = () => {
             return result.data;
         }
     });
-    const handleSearch = ( e ) => {
+    const handleSearch = (e) => {
         setSearchKey(e.target.value);
         setActivePage(1);
     }
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Available Camps</title>
+            </Helmet>
             <h2 className='font-bold text-3xl sm:text-5xl text-primary max-lg:text-center lg:text-end drop-shadow'>Explore available camps to join now</h2>
             <div className="mt-5 flex items-center gap-10 max-lg:justify-center">
                 <div onClick={() => setIsLayoutToggled(!isLayoutToggled)} className="text-3xl max-lg:hidden">

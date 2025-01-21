@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosPrivate from "../../hooks/useAxiosPrivate";
 import SpinnerSmall from "../../components/SpinnerSmall/SpinnerSmall";
 import History from "../../components/History/History";
+import 'animate.css';
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -24,7 +26,10 @@ const PaymentHistory = () => {
         refetch();
     }
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
+            <Helmet>
+                <title>Payment History</title>
+            </Helmet>
             <div className="mb-5 lg:mb-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Payment history</h2>
             </div>
