@@ -18,7 +18,7 @@ const Camp = ({ camp }) => {
                 <img className='border h-32' src={photoURL} alt="camp photo" />
             </div>
             <div>
-                <p className='text-2xl font-sans font-bold text-sky-950'><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
+                <p className={`text-2xl font-sans font-bold ${currentLocation === '/' ? 'text-primary' : 'text-sky-950'}`}><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
                 <p><IoLocation className='inline -mt-[4px] text-secondary text-lg mr-2' />{location}</p>
                 <p className=''><FaPerson className='inline -mt-[4px] text-secondary mr-2' />Professional: <span className='font-semibold text-md'>{professionalName}</span></p>
                 <p><MdAttachMoney className='inline -mt-[4px] text-secondary text-lg mr-2' />${fees}</p>

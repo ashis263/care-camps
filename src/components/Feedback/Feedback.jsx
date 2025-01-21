@@ -28,9 +28,6 @@ const Feedback = () => {
                 <SpinnerSmall></SpinnerSmall>
             }
             <Swiper
-                pagination={{
-                    clickable: true,
-                }}
                 modules={[Pagination, Autoplay]}
                 loop={true}
                 autoplay={{
@@ -57,7 +54,7 @@ const Feedback = () => {
                     !isPending
                     &&
                     reviews.map(review =>
-                        <SwiperSlide key={review._id}>
+                        <SwiperSlide  style={{ height: '350px' }} key={review._id}>
                             <Reviews review={review}></Reviews>
                         </SwiperSlide>
                     )
