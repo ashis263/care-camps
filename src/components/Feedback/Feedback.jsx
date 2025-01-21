@@ -19,7 +19,7 @@ const Feedback = () => {
     return (
         <div>
             <div className="my-5 lg:my-10">
-                <h2 className='font-bold text-4xl sm:text-5xl text-primary text-center'>Camp Reviews</h2>
+                <h2 className='font-bold text-4xl sm:text-5xl text-secondary drop-shadow-2xl text-center'>Camp Reviews</h2>
                 <p className="text-center py-2">What people say about the camps</p>
             </div>
             {

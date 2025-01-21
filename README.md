@@ -23,3 +23,8 @@ CareCams is simple health camp management system using reactJS, nodeJS, expressJ
   
   
 - For data security jsonwebtoken was implemented on the server side and these token was used by storing on browser's local storage. For an extra layer of security axios interceptor was used to fetch the secures datas.
+
+
+## Live Link for this project
+- [https://care-camps.web.app/](https://care-camps.web.app/)
+- [https://care-camps.netlify.app/](https://care-camps.netlify.app/)

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { FaQuoteLeft } from "react-icons/fa";
 import ReactStarsRating from 'react-awesome-stars-rating';
 
 const Review = ({ review }) => {

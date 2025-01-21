@@ -3,6 +3,7 @@ import Feedback from "../../components/Feedback/Feedback";
 import PopularCamps from "../../components/PopularCamps/PopularCamps";
 import 'animate.css';
 import { Helmet } from "react-helmet-async";
+import Statistics from "../../components/Statistics/Statistics";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularCamps></PopularCamps>
             <Feedback></Feedback>
+            <Statistics></Statistics>
         </div>
     );
 }
