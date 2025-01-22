@@ -15,7 +15,7 @@ const Statistics = () => {
                 <p className="text-center py-2">About our camps and clients</p>
             </div>
             <div className="sm:flex justify-center items-center space-y-28">
-                <div className="sm:w-2/5 -mt-20">
+                <div className="sm:w-2/5 w-[55%] mx-auto -mt-20">
                 <ResponsiveContainer width="100%" height={400}>
                     <PieChart width={730} height={250}>
                         <Pie data={data.camps} dataKey="participantCount" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="#198298" />
