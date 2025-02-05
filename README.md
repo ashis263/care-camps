@@ -78,7 +78,7 @@
 <p>Follow these steps to set up <strong>CareCamps</strong> on your local machine:</p>
 
 <h3>1️⃣ Clone the Repository</h3>
-<pre><code>git clone https://github.com/your-username/carecamps.git
+<pre><code>git clone https://github.com/ashis263/care-camps.git
 cd carecamps</code></pre>
 
 <h3>2️⃣ Install Dependencies</h3>
