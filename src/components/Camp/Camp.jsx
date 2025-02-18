@@ -13,20 +13,20 @@ const Camp = ({ camp }) => {
     const currentLocation = useLocation().pathname;
     const dateTimeString = moment(dateTime).format('ddd MMM DD YYYY,  h:mm:ss A');
     return (
-        <div className='flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full'>
+        <div className={`${currentLocation === '/' ? 'justify-center text-center' : ''} flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full`}>
             <div>
                 <img className='border h-32' src={photoURL} alt="camp photo" />
             </div>
             <div>
-                <p className={`text-2xl font-sans font-bold ${currentLocation === '/' ? 'text-primary' : 'text-sky-950'}`}><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
-                <p><IoLocation className='inline -mt-[4px] text-secondary text-lg mr-2' />{location}</p>
-                <p className=''><FaPerson className='inline -mt-[4px] text-secondary mr-2' />Professional: <span className='font-semibold text-md'>{professionalName}</span></p>
-                <p><MdAttachMoney className='inline -mt-[4px] text-secondary text-lg mr-2' />${fees}</p>
-                <p><HiMiniCalendarDateRange className='inline -mt-[4px] text-secondary text-lg mr-2' />{dateTimeString}</p>
+                <p className={`text-2xl font-sans font-bold text-pr`}><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
+                <p  className={`${currentLocation === '/' ? 'hidden' : ''}`}><IoLocation className='inline -mt-[4px] text-secondary text-lg mr-2' />{location}</p>
+                <p className={`${currentLocation === '/' ? 'hidden' : ''}`}><FaPerson className='inline -mt-[4px] text-secondary mr-2' />Professional: <span className='font-semibold text-md'>{professionalName}</span></p>
+                <p  className={`${currentLocation === '/' ? 'hidden' : ''}`}><MdAttachMoney className='inline -mt-[4px] text-secondary text-lg mr-2' />${fees}</p>
+                <p  className={`${currentLocation === '/' ? 'hidden' : ''}`}><HiMiniCalendarDateRange className='inline -mt-[4px] text-secondary text-lg mr-2' />{dateTimeString}</p>
                 <p> <MdGroups3 className='inline -mt-[4px] text-secondary text-lg mr-2' />{participantCount} Joined</p>
-                <p className='text-justify'><FaInfo className='inline -mt-[4px] text-secondary mr-2' />{description}</p>
+                <p className={`${currentLocation === '/' ? 'hidden text-justify' : 'text-justify'}`}><FaInfo className='inline -mt-[4px] text-secondary mr-2' />{description}</p>
             </div>
-                <Link to={`/camp-details/${_id}`} className={`btn btn-sm btn-wide my-2  ${currentLocation === '/' ? 'btn-outline text-primary' : 'bg-cyan-700 text-slate-50 hover:bg-primary'}`}>Details</Link>
+                <Link to={`/camp-details/${_id}`} className={`btn btn-sm btn-wide my-2 border-none btn-outline bg-primary text-white hover:bg-primary`}>Details</Link>
         </div>
     );
 };

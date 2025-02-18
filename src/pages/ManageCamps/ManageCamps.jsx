@@ -34,7 +34,7 @@ const ManageCamps = () => {
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Manage Camps</h2>
             </div>
             <div className="flex justify-end max-sm:justify-center mb-3">
-                <label className="input input-sm input-bordered flex items-center gap-2">
+                <label className="input input-sm input-bordered flex items-center gap-2 dark:bg-gray-600">
                     <input onChange={handleSearch} type="text" className="grow" placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -49,9 +49,9 @@ const ManageCamps = () => {
                 </label>
             </div>
             <div className="overflow-x-auto">
-                <table className="table table-zebra">
+                <table className="table">
                     <thead>
-                        <tr>
+                        <tr className="dark:text-gray-50">
                             <th>Camp Name</th>
                             <th>Date & Time</th>
                             <th>Location</th>
@@ -63,7 +63,7 @@ const ManageCamps = () => {
                         {
                             isPending
                             ||
-                            camps.map(camp => <AdminCamp key={camp._id} camp={camp} refetch={refetch} setActivePage={setActivePage} totalDeleted={totalDeleted} setTotalDeleted={setTotalDeleted} ></AdminCamp>)
+                            camps.map((camp, index) => <AdminCamp index={index} key={camp._id} camp={camp} refetch={refetch} setActivePage={setActivePage} totalDeleted={totalDeleted} setTotalDeleted={setTotalDeleted} ></AdminCamp>)
                         }
                     </tbody>
                 </table>

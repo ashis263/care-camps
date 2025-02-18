@@ -62,7 +62,7 @@ const Login = () => {
                 <title>Login</title>
             </Helmet>
             <div className="flex flex-col animate__animated animate__fadeIn">
-                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto bg-white p-10 rounded-xl shadow">
+                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 p-10 rounded-xl shadow">
                     <p className="text-center text-2xl font-semibold mb-5">Welcome back!</p>
                     <p className="text-gray-400 text-center mb-2">Login with google account</p>
                     <Social></Social>
@@ -71,24 +71,24 @@ const Login = () => {
                         <label className="label">
                             <span className={`label-text`}>Email</span>
                         </label>
-                        <input type="email" placeholder="Email" {...register('email', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                        <input type="email" placeholder="Email" {...register('email', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-600" required />
                     </div>
                     <div className="form-control relative">
                         <label className="label">
                             <span className={`label-text`}>Password</span>
                         </label>
-                        <input type={!isPassShowing ? 'password' : 'text'} placeholder="Password" {...register('password', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                        <input type={!isPassShowing ? 'password' : 'text'} placeholder="Password" {...register('password', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-600" required />
                         <div onClick={handleShowPass} className="absolute right-4 text-gray-300 top-10 text-2xl lg:right-6 lg:top-12">
                             {
                                 !isPassShowing ? <IoIosEye /> : <IoIosEyeOff />
                             }
                         </div>
                         <label className="label flext flex-col items-start gap-1 sm:gap-2">
-                            <p>Don&apos;t have an account? <Link to="/auth/register" className="underline">Register</Link></p>
+                            <p>Don&apos;t have an account? <Link to="/auth/register" className="underline dark:hover:text-gray-50">Register</Link></p>
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn max-lg:btn-sm hover:bg-[#000c] border-none bg-black text-white lg:text-xl">Login</button>
+                        <button className="btn max-lg:btn-sm border-none bg-primary hover:bg-primary text-white lg:text-xl">Login</button>
                     </div>
                 </form>
             </div>

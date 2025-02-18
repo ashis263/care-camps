@@ -38,7 +38,7 @@ const AvailableCamps = () => {
                     }
                 </div>
                 <div className="flex max-sm:flex-col gap-5">
-                    <label className="input input-sm input-bordered flex items-center gap-2">
+                    <label className="input input-sm input-bordered flex items-center gap-2 dark:bg-gray-600">
                         <input onChange={handleSearch} type="text" className="grow" placeholder="Search" />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const AvailableCamps = () => {
                     <select onChange={(e) => {
                         setSortBy(e.target.value);
                         refetch();
-                    }} className="select select-sm select-bordered max-w-xs">
+                    }} className="select select-sm select-bordered max-w-xs dark:bg-gray-600">
                         <option disabled selected>Sort by</option>
                         <option value="name">Name</option>
                         <option value="fees">Fees</option>

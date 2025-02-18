@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import { IoCloseOutline } from "react-icons/io5";
 
 
-const MangeRegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted }) => {
+const MangeRegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted, index }) => {
     const { _id, campName, campId, participantEmail, participantName, fees } = camp;
     const { user } = useAuth();
     const axiosPrivate = UseAxiosPrivate();
@@ -46,7 +46,7 @@ const MangeRegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTo
                     });
     }
     return (
-        <tr>
+        <tr className={index%2 === 0 ? "" : "bg-gray-100 dark:bg-gray-700"}>
             <td>{campName}</td>
             <td>{participantName}</td>
             <td>${fees}</td>
@@ -59,7 +59,7 @@ const MangeRegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTo
                 {
                     camp?.paymentStatus && camp?.confirmationStatus
                         ?
-                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><IoCloseOutline /></button>
+                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent dark:disabled:text-gray-500' disabled><IoCloseOutline /></button>
                         :
                         <button onClick={handleCancel} className='btn btn-xs text-lg btn-ghost text-secondary'><IoCloseOutline /></button>
                 }
@@ -74,7 +74,8 @@ MangeRegisteredCamp.propTypes = {
     refetch: PropTypes.func.isRequired,
     totalDeleted: PropTypes.number.isRequired,
     setActivePage: PropTypes.func.isRequired,
-    setTotalDeleted: PropTypes.func.isRequired
+    setTotalDeleted: PropTypes.func.isRequired,
+        index: PropTypes.number.isRequired
 };
 
 

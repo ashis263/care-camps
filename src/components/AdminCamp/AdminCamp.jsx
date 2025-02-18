@@ -12,7 +12,7 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 
 
-const AdminCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted }) => {
+const AdminCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted, index }) => {
     const [open, setOpen] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const { _id, name, dateTime, location, professionalName, description, participantCount, fees } = camp;
@@ -103,7 +103,7 @@ const AdminCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted
         }
     }
     return (
-        <tr>
+        <tr className={index%2 === 0 ? "" : "bg-gray-100 dark:bg-gray-700"}>
             <td>{name}</td>
             <td>{dateTime}</td>
             <td>{location}</td>
@@ -182,7 +182,8 @@ AdminCamp.propTypes = {
     refetch: PropTypes.func.isRequired,
     totalDeleted: PropTypes.number.isRequired,
     setActivePage: PropTypes.func.isRequired,
-    setTotalDeleted: PropTypes.func.isRequired
+    setTotalDeleted: PropTypes.func.isRequired,
+        index: PropTypes.number.isRequired
 };
 
 

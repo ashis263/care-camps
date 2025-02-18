@@ -85,26 +85,26 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
             <div className="flex flex-col mb-10">
-                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto bg-white p-10 rounded-xl shadow">
+                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 bg-white p-10 rounded-xl shadow">
                     <p className="text-center text-2xl font-semibold">Register</p>
                     <p className="text-gray-400 text-center mb-2">Register with email and password</p>
                     <div className="form-control">
                         <label className="label">
                             <span className={`label-text`}>Email</span>
                         </label>
-                        <input type="email" placeholder="Email" {...register('email', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                        <input type="email" placeholder="Email" {...register('email', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-600" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className={`label-text`}>Name</span>
                         </label>
-                        <input type="text" placeholder="Name" {...register('name', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                        <input type="text" placeholder="Name" {...register('name', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-600" required />
                     </div>
                     <div className="form-control relative">
                         <label className="label">
                             <span className={`label-text`}>Password</span>
                         </label>
-                        <input type={!isPassShowing ? 'password' : 'text'} placeholder="Password" {...register('password', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                        <input type={!isPassShowing ? 'password' : 'text'} placeholder="Password" {...register('password', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-600" required />
                         <div onClick={handleShowPass} className="absolute right-4 text-gray-300 top-10 text-2xl lg:right-6 lg:top-12">
                             {
                                 !isPassShowing ? <IoIosEye /> : <IoIosEyeOff />
@@ -115,13 +115,13 @@ const Register = () => {
                         <label className="label">
                             <span className={`label-text`}>Display photo</span>
                         </label>
-                        <input type="file" placeholder="" {...register('image', { required: true })} className="file-input max-lg:file-input-sm file-input-bordered" accept="image/*" required />
+                        <input type="file" placeholder="" {...register('image', { required: true })} className="file-input max-lg:file-input-sm file-input-bordered dark:bg-gray-600" accept="image/*" required />
                         <label className="label flext flex-col items-start gap-1 sm:gap-2">
-                            <p>Already have an account? <Link to="/auth/login" className="underline">Login</Link></p>
+                            <p>Already have an account? <Link to="/auth/login" className="underline dark:hover:text-gray-50">Login</Link></p>
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn max-lg:btn-sm hover:bg-[#000c] border-none bg-black text-white lg:text-xl">Register</button>
+                        <button className="btn max-lg:btn-sm border-none bg-primary hover:bg-primary text-white lg:text-xl">Register</button>
                     </div>
                     <p className="divider py-5 text-gray-400 text-center">Or continue with</p>
                     <Social></Social>

@@ -12,7 +12,7 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 import Payment from '../Payment/Payment';
 
 
-const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted }) => {
+const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted, index }) => {
     const [open, setOpen] = useState(false);
     const [openPayment, setOpenPayment] = useState(false);
     const [rating, setRating] = useState(0);
@@ -107,7 +107,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
         });
     }
     return (
-        <tr>
+        <tr className={index%2 === 0 ? "" : "bg-gray-100 dark:bg-gray-700"}>
             <td>{campName}</td>
             <td>${fees}</td>
             <td>{professionalName}</td>
@@ -115,7 +115,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
                 {
                     camp?.paymentStatus
                         ?
-                        <button className='btn btn-xs btn-outline' disabled>Paid</button>
+                        <button className='btn btn-xs btn-outline dark:disabled:text-gray-500' disabled>Paid</button>
                         :
                         <button onClick={setOpenPayment} className='btn btn-xs btn-outline text-primary'>Pay</button>
                 }
@@ -129,7 +129,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
                 {
                     camp?.paymentStatus
                         ?
-                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><IoCloseOutline /></button>
+                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent  dark:disabled:text-gray-500' disabled><IoCloseOutline /></button>
                         :
                         <button onClick={handleCancel} className='btn btn-xs text-lg btn-ghost text-secondary'><IoCloseOutline /></button>
                 }
@@ -140,7 +140,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
                         ?
                         <button onClick={() => setOpen(!open)} className='btn btn-xs text-lg btn-ghost text-primary'><VscFeedback /></button>
                         :
-                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent' disabled><VscFeedback /></button>
+                        <button className='btn btn-xs text-lg btn-ghost disabled:bg-transparent dark:disabled:text-gray-500' disabled><VscFeedback /></button>
                 }
             </td>
             <Modal open={open} onClose={() => setOpen(!open)} center>
@@ -167,7 +167,8 @@ RegisteredCamp.propTypes = {
     refetch: PropTypes.func.isRequired,
     totalDeleted: PropTypes.number.isRequired,
     setActivePage: PropTypes.func.isRequired,
-    setTotalDeleted: PropTypes.func.isRequired
+    setTotalDeleted: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired
 };
 
 

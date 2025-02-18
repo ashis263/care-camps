@@ -47,7 +47,7 @@ const Social = () => {
   };
   return (
     <div className="relative">
-      <button onClick={handleClick} className="btn w-full max-lg:btn-sm btn-outline border-gray-300">
+      <button onClick={handleClick} className="btn w-full max-lg:btn-sm btn-outline text-primary dark:bg-gray-500 dark:text-gray-50 dark:border-none hover:bg-primary hover:border-none">
         <FaGoogle />
         Google
       </button>

@@ -1,6 +1,15 @@
-a.active{
+li > a.active{
     color: #198298 !important;
     font-weight: bolder;
     text-decoration: underline !important;
+    background-color: transparent !important;
+}
+
+li > a:hover{
+    color: #198298 !important;
+    background-color: transparent !important;
+}
+
+.dropBtn:active{
     background-color: transparent !important;
 }

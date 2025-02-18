@@ -6,16 +6,12 @@ import useAdmin from '../../hooks/useAdmin';
 import Spinner from "../Spinner/Spinner";
 import Swal from "sweetalert2";
 import { FaBars } from 'react-icons/fa6'
-import { LuLayoutDashboard } from "react-icons/lu";
 import { IoLogOutOutline } from "react-icons/io5";
+import ThemeToggler from '../ThemeToggler/ThemeToggler'
 
 const Navbar = () => {
     const { user, isLoading, logOut } = useAuth();
     const [isAdmin] = useAdmin();
-    const navlinks = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/camps'>Available Camps</NavLink></li>
-    </>
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -37,16 +33,34 @@ const Navbar = () => {
                 });
             })
     }
+    const navlinks = <div className="lg:flex items-center">
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/camps'>Available Camps</NavLink></li>
+        <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/analytics'}>Dashboard</Link></li>
+        <li><button className='py-0 m-0 max-lg:hidden hover:bg-transparent dropBtn'><ThemeToggler></ThemeToggler></button>
+        </li>
+        <li><button onClick={handleLogout} className={user ? "btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden" : "hidden btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden"}><IoLogOutOutline />Logout</button></li>
+    </div>
     if (isLoading) {
         return <Spinner></Spinner>
     } else {
         return (
-            <div className="shadow">
-                <div className="navbar w-11/12 mx-auto">
+            <div className="bg-slate-100 dark:bg-slate-800 shadow-sm dark:shadow-lg fixed w-full max-w-screen-2xl mx-auto z-10 backdrop-blur-xl">
+                <div className="navbar w-11/12 mx-auto p-0">
                     <div className="navbar-start">
+                        <div className="dropdown max-lg:mr-2 max-lg:pt-[1px]">
+                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 text-2xl">
+                                <FaBars />
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 p-2 shadow dark:bg-gray-700">
+                                {navlinks}
+                            </ul>
+                        </div>
                         <Link to="/" className="btn btn-ghost text-xl hover:bg-transparent p-0 mr-10">
-                            <img src={icon} className='w-10 sm:w-12 -m-4 mr-1' alt="" />
-                            <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold'><span className=''>Care</span>Camps</h2>
+                            <img src={icon} className='w-6 sm:w-8 mr-1' alt="" />
+                            <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold text-secondary'><span className='text-primary'>Care</span>Camps</h2>
                         </Link>
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">
@@ -55,35 +69,23 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="navbar-end">
+                        <button className='py-0 m-0 lg:hidden hover:bg-transparent dropBtn pr-2'><ThemeToggler></ThemeToggler></button>
                         {
                             !user
                                 ?
-                                <Link to='/auth/login' className="btn btn-sm bg-primary text-gray-50 hover:bg-primary rounded-none">Join Us</Link>
+                                <div>
+                                    <Link to='/auth/login' className="btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none">Join Us</Link>
+                                </div>
                                 :
-                                <div className="relative dropdown">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost hover:bg-transparent p-0">
-                                        <img src={user.photoURL} className='w-7 aspect-square lg:w-9 rounded-full border' alt="" />
+                                <div className="flex items-center">
+                                    <div className="">
+                                        <div title={user.displayName} tabIndex={0} role="button" className="">
+                                            <img src={user.photoURL} className='w-6 aspect-square lg:w-8 rounded-full border' alt="" />
+                                        </div>
                                     </div>
-                                    <ul
-                                        tabIndex={0}
-                                        className="relative right-0 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-32 p-2 shadow">
-                                        <p className="text-center font-bold mb-2">{user.displayName}</p>
-                                        <Link to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/analytics'} className="btn btn-xs btn-ghost bg-slate-100 hover:text-gray-50 hover:bg-primary mb-2"><LuLayoutDashboard />Dashboard</Link>
-                                        <button onClick={handleLogout} className="btn btn-xs btn-ghost bg-slate-100 hover:text-gray-50 hover:bg-primary "><IoLogOutOutline />Logout</button>
-                                    </ul>
+                                    <button onClick={handleLogout} className="max-lg:hidden btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none ml-2"><IoLogOutOutline />Logout</button>
                                 </div>
                         }
-
-                        <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 pl-2 text-2xl">
-                                <FaBars />
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow relative right-0">
-                                {navlinks}
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
