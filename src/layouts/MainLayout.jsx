@@ -6,7 +6,9 @@ import Footer from '../Footer/Footer';
 const MainLayout = () => {
     return (
         <div className='animate__animated animate__fadeIn'>
-            <Navbar></Navbar>
+            <header id="top">
+                <Navbar></Navbar>
+            </header>
             <div className='w-11/12 mx-auto pt-20 lg:pt-28'>
                 <Outlet></Outlet>
             </div>

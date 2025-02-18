@@ -13,7 +13,7 @@ const PopularCamps = () => {
         }
     });
     return (
-        <div className="">
+        <div id="popular" className="">
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-secondary drop-shadow-2xl text-center'>Popular Camps</h2>
                 <p className="text-center py-2">Camps people joined the most</p>
@@ -24,7 +24,7 @@ const PopularCamps = () => {
                     &&
                     <SpinnerSmall></SpinnerSmall>
                 }
-                <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-20 pt-5 lg:pt-10`}>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-20`}>
                     {
                         !isPending
                         &&

@@ -12,7 +12,7 @@ const Statistics = () => {
         }
     });
     return (
-        <div className="">
+        <div id="statistics" className="">
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-secondary drop-shadow-2xl text-center'>Our Statistics</h2>
                 <p className="text-center py-2">About our camps and clients</p>
