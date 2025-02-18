@@ -9,9 +9,9 @@ const Review = ({ review }) => {
             <div className='flex gap-5 justify-between items-end'>
                 <img className='w-1/4 aspect-square rounded-xl' src={userPhotoURL} alt="" />
                 <div className='w-3/5 space-y-3'>
+                    <p className='text-xs font-gray-400 text-justify'>{feedback}</p>
                     <ReactStarsRating className="flex justify-end" value={rating} />
                     <p className='text-xl font-medium text-end'>{reviewBy}</p>
-                    <p className='text-xs font-gray-400 text-justify'>{feedback}</p>
                 </div>
             </div>
         </div>

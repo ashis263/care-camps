@@ -40,11 +40,11 @@ const Feedback = () => {
                         slidesPerView: 1,
                         spaceBetween: 10,
                     },
-                    768: {
+                    1024: {
                         slidesPerView: 2,
                         spaceBetween: 20,
                     },
-                    1024: {
+                    1440: {
                         slidesPerView: 3,
                         spaceBetween: 30,
                     }

@@ -14,7 +14,7 @@ const Footer = () => {
                     <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold text-secondary'><span className='text-primary'>Care</span>Camps</h2>
                 </Link>
                 <p className='text-xs sm:w-3/4 mx-auto'>CareCamps works to bridge the gap in healthcare by organizing impactful medical camps that deliver quality care to various communities. From preventive screenings to life-saving treatments, our camps are designed to inspire hope and transform lives.</p>
-                <div className='flex gap-5 sm:gap-10 lg:gap-20 justify-center font-bold text-primary'>
+                <div className='flex gap-5 sm:gap-10 lg:gap-20 justify-between font-bold text-primary'>
                     <Link to="/">Home</Link>
                     <Link to="/camps">Available Camps</Link>
                     <Link hidden={user?true:false} to="/auth/register">Join Us</Link>

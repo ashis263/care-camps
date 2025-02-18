@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import SpinnerSmall from "../SpinnerSmall/SpinnerSmall";
 import Camp from "../Camp/Camp";
-import { Link } from "react-router-dom";
 
 const PopularCamps = () => {
     const axiosPublic = UseAxiosPublic();
@@ -14,26 +13,23 @@ const PopularCamps = () => {
         }
     });
     return (
-        <div className="sm:w-4/5 mx-auto self-stretch">
+        <div className="">
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-4xl sm:text-5xl text-secondary drop-shadow-2xl text-center'>Popular Camps</h2>
                 <p className="text-center py-2">Camps people joined the most</p>
             </div>
-            <div className="shadow-md shadow-primary rounded-xl">
+            <div className="rounded-xl">
                 {
                     isPending
                     &&
                     <SpinnerSmall></SpinnerSmall>
                 }
-                <div className={`grid grid-cols-1 sm:grid-cols-2 p-5 lg:p-10 :grid-cols-3 gap-5 lg:gap-20 py-5 lg:py-10`}>
+                <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-20 pt-5 lg:pt-10`}>
                     {
                         !isPending
                         &&
                         camps.map(camp => <Camp key={camp._id} camp={camp}></Camp>)
                     }
-                </div>
-                <div className="flex justify-center pb-5 px-10 lg:py-10">
-                <Link to="/camps" className="btn bg-primary text-white hover:bg-primary max-sm:btn-sm w-full">Available Camps</Link>
                 </div>
             </div>
         </div>

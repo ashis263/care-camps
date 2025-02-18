@@ -7,7 +7,7 @@ const MainLayout = () => {
     return (
         <div className='animate__animated animate__fadeIn'>
             <Navbar></Navbar>
-            <div className='w-11/12 mx-auto py-20 lg:py-28'>
+            <div className='w-11/12 mx-auto pt-20 lg:pt-28'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

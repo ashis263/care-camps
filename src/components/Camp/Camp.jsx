@@ -13,12 +13,12 @@ const Camp = ({ camp }) => {
     const currentLocation = useLocation().pathname;
     const dateTimeString = moment(dateTime).format('ddd MMM DD YYYY,  h:mm:ss A');
     return (
-        <div className={`${currentLocation === '/' ? 'justify-center text-center' : ''} flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full`}>
+        <div className={`${currentLocation === '/' ? 'justify-center text-center' : ''} flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full rounded-lg dark:shadow-primary`}>
             <div>
-                <img className='border h-32' src={photoURL} alt="camp photo" />
+                <img className='border h-32 rounded-lg' src={photoURL} alt="camp photo" />
             </div>
             <div>
-                <p className={`text-2xl font-sans font-bold text-pr`}><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
+                <p className={`text-2xl font-sans font-bold text-pr text-primary`}><FaClinicMedical className='inline -mt-[4px] text-secondary text-[17px] mr-2' />{name}</p>
                 <p  className={`${currentLocation === '/' ? 'hidden' : ''}`}><IoLocation className='inline -mt-[4px] text-secondary text-lg mr-2' />{location}</p>
                 <p className={`${currentLocation === '/' ? 'hidden' : ''}`}><FaPerson className='inline -mt-[4px] text-secondary mr-2' />Professional: <span className='font-semibold text-md'>{professionalName}</span></p>
                 <p  className={`${currentLocation === '/' ? 'hidden' : ''}`}><MdAttachMoney className='inline -mt-[4px] text-secondary text-lg mr-2' />${fees}</p>

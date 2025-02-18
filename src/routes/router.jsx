@@ -27,8 +27,7 @@ const router = createBrowserRouter([
         children: ([
             {
                 path: "/",
-                element: <Home></Home>,
-                loader: () => fetch("https://carecamps-server.vercel.app/stat")
+                element: <Home></Home>
             },
             {
                 path: 'camps',
