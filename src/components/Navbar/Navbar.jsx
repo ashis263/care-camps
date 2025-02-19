@@ -36,9 +36,9 @@ const Navbar = () => {
     const navlinks = <div className="lg:flex items-center">
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/camps'>Available Camps</NavLink></li>
-        <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/userProfile'}>Profile</Link></li>
         <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminOverview' : '/dashboard/userOverview'}>Dashboard</Link></li>
         <li><NavLink to='/about'>About Us</NavLink></li>
+        <li><NavLink to='/contact'>Contact Us</NavLink></li>
         <li><button className='py-0 px-2 m-0 max-lg:hidden hover:bg-transparent dropBtn'><ThemeToggler></ThemeToggler></button>
         </li>
         <li><button onClick={handleLogout} className={user ? "btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden" : "hidden btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden"}><IoLogOutOutline />Logout</button></li>

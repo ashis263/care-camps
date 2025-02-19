@@ -3,12 +3,12 @@ import PopularCamps from "../../components/PopularCamps/PopularCamps";
 import 'animate.css';
 import { Helmet } from "react-helmet-async";
 import Statistics from "../../components/Statistics/Statistics";
-import Contact from "../../components/Contact/Contact";
 import NewsLetter from "../../components/NewsLetter/NewsLetter";
 import Professionals from "../../components/Professionals/Professionals";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import RecentCamps from "../../components/RecentCamps/RecentCamps";
+import FAQ from "../../components/FAQ/FAQ";
 
 const Home = () => {
     const axiosPublic = UseAxiosPublic();
@@ -29,7 +29,7 @@ const Home = () => {
             <Professionals doctors={doctors} isPending={isPending}></Professionals>
             <Feedback></Feedback>
             <Statistics></Statistics>
-            <Contact></Contact>
+            <FAQ></FAQ>
             <NewsLetter></NewsLetter>
         </div>
     );

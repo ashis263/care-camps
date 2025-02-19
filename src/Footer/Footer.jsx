@@ -28,7 +28,7 @@ const Footer = () => {
                         <div className='max-sm:w-4/5 mx-auto flex flex-col max-sm:flex-wrap max-sm:gap-5 max-sm:items-center font-bold text-primary'>
                             <Link to='/#reviews'>Reviews</Link>
                             <Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#statistics">Statistics</Link>
-                            <Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#contact">Contact Us</Link>
+                            <Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#faq">Frequenty Asked</Link>
                         </div>
                     </div>
                 </div>

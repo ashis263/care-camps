@@ -19,6 +19,7 @@ import CampDetails from "../pages/CampDetails/CampDetails";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import About from "../pages/About/About";
+import ContactPage from "../pages/ContactPage/ContactPage";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: 'about',
                 element: <About></About>
+            },
+            {
+                path: 'contact',
+                element: <ContactPage></ContactPage>
             },
             {
                 path: 'camp-details/:id',
