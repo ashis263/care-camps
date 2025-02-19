@@ -144,7 +144,7 @@ const RegisteredCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDe
                 }
             </td>
             <Modal open={open} onClose={() => setOpen(!open)} center>
-                <form className='p-5' onSubmit={handleSubmit(submitForm)}>
+                <form className='p-5 dark:text-gray-500' onSubmit={handleSubmit(submitForm)}>
                     <h2 className='text-primary text-center px-28 font-bold text-2xl lg:text-3xl '>Add Feedback</h2>
                     <ReactStarsRating className="flex justify-center my-5 lg:my-10" onChange={(value) => setRating(value)} value={rating} />
                     <textarea className="textarea textarea-bordered w-full" {...register('feedback', { required: true })} placeholder="Write Feedback" required></textarea>

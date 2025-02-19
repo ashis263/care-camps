@@ -17,7 +17,6 @@ const AdminOverview = () => {
             return result.data;
         }
     });
-    console.log(stat);
     const { data: regStat = [], isPending: isRegStatPending } = useQuery({
         queryKey: ['regStat'],
         queryFn: async () => {
@@ -25,7 +24,6 @@ const AdminOverview = () => {
             return result.data;
         }
     });
-    console.log(stat, regStat);
     if (isStatPending || isRegStatPending) {
         return <SpinnerSmall></SpinnerSmall>
     }

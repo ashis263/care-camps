@@ -5,7 +5,6 @@ import Recent from '../Recent/Recent';
 
 const RecentCamps = ({ doctors, isPending }) => {
     const latest = doctors.slice(0, 4);
-    console.log(latest);
     return (
         <div id='recent'>
             <div className="my-5 lg:my-10">

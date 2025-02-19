@@ -117,7 +117,7 @@ const AdminCamp = ({ camp, refetch, setActivePage, totalDeleted, setTotalDeleted
                 </button>
             </td>
             <Modal open={open} onClose={() => setOpen(!open)} center>
-                <form className='p-5' onSubmit={handleSubmit(submitForm)}>
+                <form className='p-5 dark:text-gray-500' onSubmit={handleSubmit(submitForm)}>
                     <h2 className='text-primary text-center px-28 font-bold text-2xl lg:text-3xl '>Update Camp</h2>
                     <div className="form-control">
                         <label className="label">

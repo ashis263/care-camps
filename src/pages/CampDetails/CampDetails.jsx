@@ -92,7 +92,7 @@ const CampDetails = () => {
                 <button onClick={handleJoin} className={`btn w-full max-lg:btn-sm mt-10 bg-primary hover:bg-primary text-white hover:border-none`}>Join Now</button>
             </div>
             <Modal open={open} onClose={() => setOpen(!open)} center>
-                <form className='p-5' onSubmit={handleSubmit(submitForm)}>
+                <form className='p-5 dark:bg-gray-500' onSubmit={handleSubmit(submitForm)}>
                     <h2 className='text-primary text-center px-28 font-bold text-2xl lg:text-3xl '>Please provide some information before joining</h2>
                     <div className="form-control">
                         <label className="label">

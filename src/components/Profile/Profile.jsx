@@ -90,7 +90,7 @@ const AdminProfile = () => {
             </div>
             <Modal open={open} onClose={() => setOpen(!open)} center>
                 <h2 className='text-primary font-bold text-2xl lg:text-3xl px-10'>Update Information</h2>
-                <form onSubmit={handleSubmit(submitForm)}>
+                <form className='dark:text-gray-500' onSubmit={handleSubmit(submitForm)}>
                     <div className="form-control">
                         <label className="label">
                             <span className={`label-text`}>Email</span>
