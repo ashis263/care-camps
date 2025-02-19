@@ -1,0 +1,80 @@
+import UseAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+
+const Contact = () => {
+    const axiosPublic = UseAxiosPublic();
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const message = e.target.message.value;
+        const data = {
+            name: name, email, message
+        };
+        axiosPublic.post('http://localhost:5000/contact', data)
+            .then(res => {
+                if (res.data.Status === "Success") {
+                    Toast.fire({
+                        icon: "success",
+                        title: 'Message sent successfully!'
+                    });
+                    e.target.reset();
+                }else{
+                    Toast.fire({
+                        icon: "Error",
+                        title: 'Server Error!'
+                    });
+                }
+            })
+            .catch(err => {
+                Toast.fire({
+                    icon: "error",
+                    title: err.message
+                });
+            })
+    }
+    return (
+        <div id="contact">
+            <div className="my-5 lg:my-10">
+                <h2 className='font-bold text-secondary text-4xl sm:text-5xl drop-shadow-2xl text-center'>Contact Us</h2>
+                <p className="text-center py-2">We&apos;d love to hear from you</p>
+            </div>
+            <form onSubmit={handleSubmit} id="education" data-aos="fade-in" data-aos-duration="2000" className="space-y-5">
+                <div className="form-control">
+                    <label className="label pl-0">
+                        <span className="label-text dark:text-gray-50 text-lg">Your Name</span>
+                    </label>
+                    <input type="text" name="name" placeholder="Enter your name here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
+                </div>
+                <div className="form-control">
+                    <label className="label pl-0">
+                        <span className="label-text dark:text-gray-50 text-lg">Your Email</span>
+                    </label>
+                    <input type="email" name="email" placeholder="Enter your email here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
+                </div>
+                <div className="form-control">
+                    <label className="label pl-0">
+                        <span className="label-text dark:text-gray-50 text-lg">Your Message</span>
+                    </label>
+                    <textarea name="message" className="bg-transparent focus:outline-none border-b h-20 py-5 border-primary font-mono" placeholder="Enter your message here"></textarea>
+                </div>
+                <div className="form-control mt-6">
+                    <button className="btn max-sm:btn-sm bg-teal-700 hover:bg-teal-700 text-gray-200 border-none">Reach out</button>
+                </div>
+            </form>
+        </div>
+    );
+}
+
+export default Contact;

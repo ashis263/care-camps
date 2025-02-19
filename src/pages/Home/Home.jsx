@@ -4,6 +4,7 @@ import PopularCamps from "../../components/PopularCamps/PopularCamps";
 import 'animate.css';
 import { Helmet } from "react-helmet-async";
 import Statistics from "../../components/Statistics/Statistics";
+import Contact from "../../components/Contact/Contact";
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <PopularCamps></PopularCamps>
             <Feedback></Feedback>
             <Statistics></Statistics>
+            <Contact></Contact>
         </div>
     );
 }
