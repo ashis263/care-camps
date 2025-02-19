@@ -5,6 +5,7 @@ import 'animate.css';
 import { Helmet } from "react-helmet-async";
 import Statistics from "../../components/Statistics/Statistics";
 import Contact from "../../components/Contact/Contact";
+import NewsLetter from "../../components/NewsLetter/NewsLetter";
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <Feedback></Feedback>
             <Statistics></Statistics>
             <Contact></Contact>
+            <NewsLetter></NewsLetter>
         </div>
     );
 }
