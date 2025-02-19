@@ -13,3 +13,7 @@ li > a:hover{
 .dropBtn:active{
     background-color: transparent !important;
 }
+
+li > a {
+    padding: 8px !important;
+}

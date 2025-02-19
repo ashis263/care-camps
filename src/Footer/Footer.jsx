@@ -19,16 +19,22 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col justify-between sm:w-1/3'>
                     <div></div>
-                    <div className='flex sm:flex-col max-sm:flex-wrap max-sm:gap-5 max-sm:justify-between font-bold text-primary'>
-                        <Link to='/#reviews'>Reviews</Link>
-                        <Link to='/#professionals'>Professionals</Link>
-                        <Link to='/#recent'>Recent Camps</Link>
-                        <Link to='/#popular'>Popular Camps</Link>
+                    <div className='flex gap-10'>
+                        <div className='max-sm:w-4/5 mx-auto flex flex-col max-sm:flex-wrap max-sm:gap-5 max-sm:items-center font-bold text-primary'>
+                            <Link to='/#professionals'>Professionals</Link>
+                            <Link to='/#recent'>Recent Camps</Link>
+                            <Link to='/#popular'>Popular Camps</Link>
+                        </div>
+                        <div className='max-sm:w-4/5 mx-auto flex flex-col max-sm:flex-wrap max-sm:gap-5 max-sm:items-center font-bold text-primary'>
+                            <Link to='/#reviews'>Reviews</Link>
+                            <Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#statistics">Statistics</Link>
+                            <Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#contact">Contact Us</Link>
+                        </div>
                     </div>
                 </div>
                 <div className='flex flex-col max-sm:flex-col-reverse justify-between'>
                     <div>
-                        <AnchorLink className='flex items-center gap-2 text-gray-500 max-sm:justify-center text-sm max-sm:mt-2' href="#top">Go to top <FaArrowUp className='text-xs'/></AnchorLink>
+                        <AnchorLink className='flex items-center gap-2 text-gray-500 max-sm:justify-center text-sm max-sm:mt-2' href="#top">Go to top <FaArrowUp className='text-xs' /></AnchorLink>
                     </div>
                     <div className=''>
                         <p className="font-medium text-xs text-end max-sm:text-center">Find us on:</p>

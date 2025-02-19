@@ -53,7 +53,7 @@ const NewsLetter = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="join flex justify-center">
                         <input type='email' name="email" className="input w-full input-bordered max-sm:input-sm sm:rounded-l-full join-item focus:outline-none dark:bg-gray-600" placeholder="Email" required />
-                        <button className="form-control btn btn-wide hover:bg-primary bg-primary dark:border-none text-gray-50 max-sm:btn-sm join-item">Subscribe</button>
+                        <button className="form-control btn sm:btn-wide hover:bg-primary bg-primary dark:border-none text-gray-50 max-sm:btn-sm join-item">Subscribe</button>
                     </div>
                 </form>
             </div>

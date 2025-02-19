@@ -21,7 +21,7 @@ const MainLayout = () => {
                 <Navbar></Navbar>
                 <Banner></Banner>
             </header>
-            <div className={location.pathname === "/" ? 'w-11/12 mx-auto my-5 lg:my-10' : 'w-11/12 mx-auto pt-20 lg:pt-28'}>
+            <div className={`${location.pathname === "/" ? 'w-11/12 mx-auto my-5 lg:my-10' : 'w-11/12 mx-auto pt-20 lg:pt-28'} ${location.pathname === '/about' ? 'about' : '' }`}>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

@@ -18,6 +18,7 @@ import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import CampDetails from "../pages/CampDetails/CampDetails";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import About from "../pages/About/About";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: 'camps',
                 element: <AvailableCamps></AvailableCamps>
+            },
+            {
+                path: 'about',
+                element: <About></About>
             },
             {
                 path: 'camp-details/:id',

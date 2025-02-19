@@ -36,10 +36,10 @@ const Navbar = () => {
     const navlinks = <div className="lg:flex items-center">
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/camps'>Available Camps</NavLink></li>
-        <li><Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#contact">Contact</Link></li>
-        <li><Link className="focus:bg-transparent dark:focus:text-gray-50" to="/#statistics">Statistics</Link></li>
-        <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/analytics'}>Dashboard</Link></li>
-        <li><button className='py-0 m-0 max-lg:hidden hover:bg-transparent dropBtn'><ThemeToggler></ThemeToggler></button>
+        <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminProfile' : '/dashboard/userProfile'}>Profile</Link></li>
+        <li><Link className={user ? "" : "hidden"} to={isAdmin ? '/dashboard/adminOverview' : '/dashboard/userOverview'}>Dashboard</Link></li>
+        <li><NavLink to='/about'>About Us</NavLink></li>
+        <li><button className='py-0 px-2 m-0 max-lg:hidden hover:bg-transparent dropBtn'><ThemeToggler></ThemeToggler></button>
         </li>
         <li><button onClick={handleLogout} className={user ? "btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden" : "hidden btn btn-sm bg-primary text-gray-50 hover:bg-primary border-none lg:hidden"}><IoLogOutOutline />Logout</button></li>
     </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
                                 {navlinks}
                             </ul>
                         </div>
-                        <Link to="/" className="btn btn-ghost text-xl hover:bg-transparent p-0 mr-10">
+                        <Link to="/" className="btn btn-ghost text-xl hover:bg-transparent p-0 mr-5">
                             <img src={icon} className='w-6 sm:w-8 mr-1' alt="" />
                             <h2 className='text-3xl sm:text-4xl font-finlandica font-extrabold text-secondary'><span className='text-primary'>Care</span>Camps</h2>
                         </Link>
