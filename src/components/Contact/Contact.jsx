@@ -1,5 +1,6 @@
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import contact from '../../assets/contact.png'
 
 const Contact = () => {
     const axiosPublic = UseAxiosPublic();
@@ -30,7 +31,7 @@ const Contact = () => {
                         title: 'Message sent successfully!'
                     });
                     e.target.reset();
-                }else{
+                } else {
                     Toast.fire({
                         icon: "Error",
                         title: 'Server Error!'
@@ -45,34 +46,39 @@ const Contact = () => {
             })
     }
     return (
-        <div id="contact">
+        <div id="contact" className="">
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-secondary text-4xl sm:text-5xl drop-shadow-2xl text-center'>Contact Us</h2>
                 <p className="text-center py-2">We&apos;d love to hear from you</p>
             </div>
-            <form onSubmit={handleSubmit} id="education" data-aos="fade-in" data-aos-duration="2000" className="space-y-5">
-                <div className="form-control">
-                    <label className="label pl-0">
-                        <span className="label-text dark:text-gray-50 text-lg">Your Name</span>
-                    </label>
-                    <input type="text" name="name" placeholder="Enter your name here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
+            <div className="sm:flex justify-between p-5 shadow dark:shadow-xl rounded-xl">
+                <div className="sm:w-3/5">
+                    <form onSubmit={handleSubmit} id="education" data-aos="fade-in" data-aos-duration="2000" className="space-y-5">
+                        <div className="form-control">
+                            <label className="label pl-0">
+                                <span className="label-text dark:text-gray-50 text-lg">Your Name</span>
+                            </label>
+                            <input type="text" name="name" placeholder="Enter your name here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label pl-0">
+                                <span className="label-text dark:text-gray-50 text-lg">Your Email</span>
+                            </label>
+                            <input type="email" name="email" placeholder="Enter your email here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label pl-0">
+                                <span className="label-text dark:text-gray-50 text-lg">Your Message</span>
+                            </label>
+                            <textarea name="message" className="bg-transparent focus:outline-none border-b h-20 py-5 border-primary font-mono" placeholder="Enter your message here"></textarea>
+                        </div>
+                        <div className="form-control mt-6">
+                            <button className="btn max-sm:btn-sm bg-primary hover:bg-primary text-gray-200 border-none">Reach out</button>
+                        </div>
+                    </form>
                 </div>
-                <div className="form-control">
-                    <label className="label pl-0">
-                        <span className="label-text dark:text-gray-50 text-lg">Your Email</span>
-                    </label>
-                    <input type="email" name="email" placeholder="Enter your email here" className="bg-transparent focus:outline-none border-b h-5 py-5 border-primary font-mono" required />
-                </div>
-                <div className="form-control">
-                    <label className="label pl-0">
-                        <span className="label-text dark:text-gray-50 text-lg">Your Message</span>
-                    </label>
-                    <textarea name="message" className="bg-transparent focus:outline-none border-b h-20 py-5 border-primary font-mono" placeholder="Enter your message here"></textarea>
-                </div>
-                <div className="form-control mt-6">
-                    <button className="btn max-sm:btn-sm bg-teal-700 hover:bg-teal-700 text-gray-200 border-none">Reach out</button>
-                </div>
-            </form>
+                <img className="w-2/5 xl:w-1/3 max-sm:hidden place-self-end" src={contact} alt="contact image" />
+            </div>
         </div>
     );
 }
