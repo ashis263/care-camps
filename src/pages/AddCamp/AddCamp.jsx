@@ -77,53 +77,52 @@ const AddCamp = () => {
             <div className="mb-5 lg:mb-16">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Add Camp</h2>
             </div>
-            <form onSubmit={handleSubmit(submitForm)} className="sm:w-3/4 mx-auto my-10 shadow-md shadow-primary p-10 rounded-lg">
-                <h3 className="text-2xl text-center font-bold mb-5 font-mono text-slate-700">Add a new camp</h3>
+            <form onSubmit={handleSubmit(submitForm)} className=" mx-auto my-10 shadow-md shadow-primary p-10 rounded-lg">
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Camp Name</span>
+                        <span className={`label-text dark:text-gray-400`}>Camp Name</span>
                     </label>
-                    <input type="text" placeholder="Camp Name" {...register('name', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    <input type="text" placeholder="Camp Name" {...register('name', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-700" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Camp Fees</span>
+                        <span className={`label-text dark:text-gray-400`}>Camp Fees</span>
                     </label>
-                    <input type="number" placeholder="Camp Fees" {...register('fees', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    <input type="number" placeholder="Camp Fees" {...register('fees', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-700" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Camp Location</span>
+                        <span className={`label-text dark:text-gray-400`}>Camp Location</span>
                     </label>
-                    <input type="text" placeholder="Camp Location" {...register('location', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    <input type="text" placeholder="Camp Location" {...register('location', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-700" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Healthcare Professional Name</span>
+                        <span className={`label-text dark:text-gray-400`}>Healthcare Professional Name</span>
                     </label>
-                    <input type="text" placeholder="Healthcare Professional Name" {...register('professionalName', { required: true })} className="input max-lg:input-sm input-bordered" required />
+                    <input type="text" placeholder="Healthcare Professional Name" {...register('professionalName', { required: true })} className="input max-lg:input-sm input-bordered dark:bg-gray-700" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Participant Count</span>
+                        <span className={`label-text dark:text-gray-400`}>Participant Count</span>
                     </label>
-                    <input type="number" placeholder="Participant Count" {...register('participantCount', { required: true })} value={0} readOnly className="input max-lg:input-sm input-bordered" required />
+                    <input type="number" placeholder="Participant Count" {...register('participantCount', { required: true })} value={0} readOnly className="input max-lg:input-sm input-bordered dark:bg-gray-700" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Camp Description</span>
+                        <span className={`label-text dark:text-gray-400`}>Camp Description</span>
                     </label>
-                    <textarea className="textarea textarea-bordered" placeholder="Camp Description" {...register('description', { required: true })}></textarea>
+                    <textarea className="textarea textarea-bordered dark:bg-gray-700" placeholder="Camp Description" {...register('description', { required: true })}></textarea>
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Camp photo</span>
+                        <span className={`label-text dark:text-gray-400`}>Camp photo</span>
                     </label>
-                    <input type="file" placeholder="" {...register('image', { required: true })} className="file-input max-lg:file-input-sm file-input-bordered" accept="image/*" required />
+                    <input type="file" placeholder="" {...register('image', { required: true })} className="file-input max-lg:file-input-sm file-input-bordered dark:bg-gray-700" accept="image/*" required />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className={`label-text`}>Date and Time</span>
+                        <span className={`label-text dark:text-gray-400`}>Date and Time</span>
                     </label>
                     <DateTimePicker className="" onChange={setDateTime} value={dateTime} />
                 </div>

@@ -59,25 +59,34 @@ const AdminProfile = () => {
         }
     }
     return (
-        <div className=''>
+        <div className='mb-5 lg:mb-10'>
             <div>
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary sm:mt-10'>Profile</h2>
             </div>
-            <div className='flex max-sm:flex-col items-center max-sm:text-center sm:mt-14 gap-10 lg:gap-20 sm:w-3/4 mx-auto p-5 shadow-md shadow-primary rounded-lg mt-20 justify-center sm:py-14 lg:py-20'>
+            <div className='flex flex-col sm:mt-14 gap-5 lg:gap-10 mx-auto p-5 shadow-md shadow-primary rounded-lg mt-20 sm:py-14 lg:py-20'>
                 <img className='w-2/5 sm:w-2/5 xl:w-1/5 rounded-full sm:rounded-lg shadow-2xl max-sm:-mt-20 border' src={user.photoURL} alt="" />
-                <div className=''>
-                    <div className='flex flex-col gap-14 sm:place-items-end justify-center'>
-                        <div className='sm:text-end'>
-                            <h2 className='text-primary font-bold text-2xl lg:text-3xl'>{user.displayName}</h2>
-                            <p className='text-gray-700 font-semibold text-xl font-mono'>{isAdmin ? 'Organizer' : 'Participant'}</p>
-                        </div>
-                        <p>Contact: <span className='font-medium'>{user.email}</span></p>
+                <div>
+                    <h2 className='text-primary font-bold text-2xl lg:text-3xl'>{user.displayName}</h2>
+                    <p className='text-primary font-semibold text-xl font-mono'>{isAdmin ? 'Organizer' : 'Participant'}</p>
+                </div>
+                <div className='space-y-2 sm:flex flex-wrap gap-5 justify-between'>
+                    <div className='border-b border-primary sm:w-2/5'>
+                        <p>Email:</p>
+                        <p className='py-3 text-primary text-lg'><span className='font-medium'>{user.email}</span></p>
+                    </div>
+                    <div className='border-b border-primary sm:w-2/5'>
+                        <p>Phone:</p>
+                        <p className='py-3 text-primary text-lg'><span className='font-medium'>{user?.phone || "Not Available"}</span></p>
+                    </div>
+                    <div className='border-b border-primary sm:w-2/5'>
+                        <p>Address:</p>
+                        <p className='py-3 text-primary text-lg'><span className='font-medium'>{user?.address || "Not Available"}</span></p>
                     </div>
                 </div>
             </div>
 
             <div className='flex justify-center'>
-                <button onClick={() => setOpen(!open)} className="btn w-full btn-outline mt-10 max-lg:btn-sm sm:w-3/4 text-primary">Update Information</button>
+                <button onClick={() => setOpen(!open)} className="btn w-full btn-outline mt-10 max-lg:btn-sm text-primary">Update Information</button>
             </div>
             <Modal open={open} onClose={() => setOpen(!open)} center>
                 <h2 className='text-primary font-bold text-2xl lg:text-3xl px-10'>Update Information</h2>
