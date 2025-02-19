@@ -106,7 +106,7 @@ const DashboardLayout = () => {
                 </div>
             </div>
             <div className='max-sm:my-10 max-sm:w-full sm:w-3/4 sm:px-10'>
-                <div className='flex items-center justify-between fixed sm:w-[calc(75%-80px)] right-10 top-10 max-sm:hidden mx-auto max-w-screen-2xl bg-slate-100 dark:bg-slate-800 p-3 rounded'>
+                <div className='flex items-center justify-between fixed z-10 sm:w-[calc(75%-80px)] right-10 top-10 max-sm:hidden mx-auto max-w-screen-2xl bg-slate-100 dark:bg-slate-800 p-3 rounded'>
                     <h2 className='text-xl lg:text-2xl font-bold'>Welcome back, <span className='text-primary'>{user.displayName}</span></h2>
                     <div className='flex items-center'>
                         <div title={user.displayName} tabIndex={0} role="button" className="">
