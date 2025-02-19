@@ -22,7 +22,7 @@ const UserOverview = () => {
     const { data: stat = [], isPending } = useQuery({
         queryKey: [user.email, 'stat'],
         queryFn: async () => {
-            const result = await axiosPrivate.get(`http://localhost:5000/userStat/?email=${user.email}`);
+            const result = await axiosPrivate.get(`/userStat/?email=${user.email}`);
             return result.data;
         }
     });
