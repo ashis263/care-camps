@@ -14,7 +14,7 @@ import useAuth from "../../hooks/useAuth";
 import 'animate.css';
 import { Helmet } from "react-helmet-async";
 
-const Analytics = () => {
+const AdminOverview = () => {
     const axiosPrivate = UseAxiosPrivate();
     const { user } = useAuth();
     const { data: camps = [] } = useQuery({
@@ -27,7 +27,7 @@ const Analytics = () => {
     return (
         <div className="animate__animated animate__fadeIn">
             <Helmet>
-                <title>Analytics</title>
+                <title>Overview</title>
             </Helmet>
             <div className="mb-10 lg:mb-20">
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary'>Statistics</h2>
@@ -54,4 +54,4 @@ const Analytics = () => {
     );
 }
 
-export default Analytics;
+export default AdminOverview;

@@ -5,7 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
-import Analytics from '../pages/Analytics/Analytics';
+import UserOverview from '../pages/UserOverview/UserOverview';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import RegisteredCamps from '../pages/RegisteredCamps/RegisteredCamps';
 import PaymentHistory from '../pages/PaymentHistory/PaymentHistory';
@@ -20,6 +20,7 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import About from "../pages/About/About";
 import ContactPage from "../pages/ContactPage/ContactPage";
+import AdminOverview from "../pages/AdminOverview/AdminOverview";
 
 const router = createBrowserRouter([
     {
@@ -70,8 +71,8 @@ const router = createBrowserRouter([
         children: ([
             //participant routes
             {
-                path: 'analytics',
-                element: <Analytics></Analytics>
+                path: 'userOverview',
+                element: <UserOverview></UserOverview>
             },
             {
                 path: 'userProfile',
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
                 element: <PaymentHistory></PaymentHistory>
             },
             //organizer routes
+            {
+                path: 'adminOverview',
+                element: <AdminRoute><AdminOverview></AdminOverview></AdminRoute>
+            },
             {
                 path: 'adminProfile',
                 element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
