@@ -1,4 +1,3 @@
-import Banner from "../../components/Banner/Banner";
 import Feedback from "../../components/Feedback/Feedback";
 import PopularCamps from "../../components/PopularCamps/PopularCamps";
 import 'animate.css';
@@ -25,7 +24,6 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <Banner></Banner>
             <RecentCamps doctors={doctors} isPending={isPending}></RecentCamps>
             <PopularCamps></PopularCamps>
             <Professionals doctors={doctors} isPending={isPending}></Professionals>

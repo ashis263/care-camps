@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import UsePages from '../../hooks/usePages';
+import { useLocation } from 'react-router-dom';
 
 
 const Pagination = ({ link, count, refetch, activePage, setActivePage }) => {
     const [showing, setShowing] = useState();
     const { paginationData, isPagesLoading } = UsePages(link, count);
     const { pages, totalData } = paginationData;
+    const location = useLocation();
     const handlePagination = page => {
         if (page > 0 && page <= pages.length) {
             setActivePage(page);
@@ -17,19 +19,19 @@ const Pagination = ({ link, count, refetch, activePage, setActivePage }) => {
         const skippped = (activePage - 1) * count;
         const remaining = totalData - skippped;
         setShowing(`${totalData === 0 ? 0 : skippped + 1} to ${remaining < count ? totalData : skippped + count}`)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activePage, totalData]);
     return (
-        <div className="flex justify-between items-center py-5 lg:py-10">
+        <div className={`${location.pathname === '/camps' ? "pt-5 lg:pt-10" : "py-5 lg:py-10"} flex justify-between items-center`}>
             <p>Showing {showing} of {totalData}</p>
             <div className="space-x-1">
                 <button onClick={() => handlePagination(activePage - 1)} className={`btn btn-xs text-gray-400`}>Prev</button>
                 {
                     !isPagesLoading
                     &&
-                    pages.map(page => <button key={page} onClick={() => handlePagination(page)} className={`btn btn-xs text-gray-400 ${activePage === page ? "text-slate-50 bg-primary" : ""}`}>{page}</button>)
+                    pages.map(page => <button key={page} onClick={() => handlePagination(page)} className={`btn btn-xs text - gray - 400 ${ activePage === page ? "text-slate-50 bg-primary" : "" } `}>{page}</button>)
                 }
-                <button onClick={() => handlePagination(activePage + 1)} className={`btn btn-xs text-gray-400`}>Next</button>
+                <button onClick={() => handlePagination(activePage + 1)} className={`btn btn-xs text - gray - 400`}>Next</button>
             </div>
         </div>
     );

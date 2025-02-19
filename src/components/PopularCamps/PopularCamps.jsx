@@ -15,7 +15,7 @@ const PopularCamps = () => {
     return (
         <div id="popular" className="">
             <div className="my-5 lg:my-10">
-                <h2 className='font-bold text-4xl sm:text-5xl text-secondary drop-shadow-2xl text-center'>Popular Camps</h2>
+                <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl text-center'>Popular Camps</h2>
                 <p className="text-center py-2">Camps people joined the most</p>
             </div>
             <div className="rounded-xl">

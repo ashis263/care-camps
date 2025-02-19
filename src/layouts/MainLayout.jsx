@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar/Navbar';
 import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import { useEffect } from 'react';
+import Banner from '../components/Banner/Banner';
 
 const MainLayout = () => {
     const location = useLocation();
@@ -18,8 +19,9 @@ const MainLayout = () => {
         <div className='animate__animated animate__fadeIn'>
             <header id="top">
                 <Navbar></Navbar>
+                <Banner></Banner>
             </header>
-            <div className='w-11/12 mx-auto pt-20 lg:pt-28'>
+            <div className={location.pathname === "/" ? 'w-11/12 mx-auto my-5 lg:my-10' : 'w-11/12 mx-auto pt-20 lg:pt-28'}>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

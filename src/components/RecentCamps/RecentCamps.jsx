@@ -9,7 +9,7 @@ const RecentCamps = ({ doctors, isPending }) => {
     return (
         <div>
             <div className="my-5 lg:my-10">
-                <h2 className='font-bold text-secondary text-4xl sm:text-5xl drop-shadow-2xl text-center'>Latest Camps</h2>
+                <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl text-center'>Latest Camps</h2>
                 <p className="text-center py-2">Recently added camps</p>
             </div>
             <div className="rounded-xl">

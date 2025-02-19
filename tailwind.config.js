@@ -15,6 +15,9 @@ export default {
         primary: '#198298',
         secondary: '#dc404e',
         tertiary: '#1a242d'
+      },
+      backgroundImage:{
+        banner: "url('/src/assets/banner.jpg')"
       }
     },
   },
