@@ -11,7 +11,7 @@ const MainLayout = () => {
         if (location.hash) {
           const element = document.getElementById(location.hash.substring(1));
           if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
           }
         }
       }, [location]);

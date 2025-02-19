@@ -5,7 +5,7 @@ import Professional from "../Professional/Professional";
 const Professionals = ({doctors, isPending}) => {
     
     return (
-        <div>
+        <div id='professionals'>
             <div className="my-5 lg:my-10">
                 <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl text-center'>Healthcare Professionals</h2>
                 <p className="text-center py-2">Dedicated medical practitioners of our camps</p>

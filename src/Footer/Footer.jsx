@@ -20,9 +20,10 @@ const Footer = () => {
                 <div className='flex flex-col justify-between sm:w-1/3'>
                     <div></div>
                     <div className='flex sm:flex-col max-sm:flex-wrap max-sm:gap-5 max-sm:justify-between font-bold text-primary'>
-                        <AnchorLink href='#popular'>Popular Camps</AnchorLink>
-                        <AnchorLink href='#reviews'>Reviews</AnchorLink>
-                        <AnchorLink href='#statistics'>Statistics</AnchorLink>
+                        <Link to='/#reviews'>Reviews</Link>
+                        <Link to='/#professionals'>Professionals</Link>
+                        <Link to='/#recent'>Recent Camps</Link>
+                        <Link to='/#popular'>Popular Camps</Link>
                     </div>
                 </div>
                 <div className='flex flex-col max-sm:flex-col-reverse justify-between'>
