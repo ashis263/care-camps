@@ -10,7 +10,7 @@ const Professionals = ({doctors, isPending}) => {
                 <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl text-center'>Healthcare Professionals</h2>
                 <p className="text-center py-2">Dedicated medical practitioners of our camps</p>
             </div>
-            <div className="rounded-xl">
+            <div className="rounded-lg">
                 {
                     isPending
                     &&

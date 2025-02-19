@@ -65,7 +65,7 @@ const DashboardLayout = () => {
         <div className='flex max-sm:flex-col max-sm:w-4/5 mx-auto max-sm:pt-2 justify-end animate__animated animate__fadeIn max-w-screen-2xl dark:bg-tertiary'>
             <aside className="min-h-[100vh] sm:w-1/4 bg-slate-800 text-gray-50 z-10 max-sm:hidden fixed left-0">
                 <div className='flex items-center py-10 pl-2 gap-2 mb-10 lg:mb-16'>
-                    <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-xl' alt="" />
+                    <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-lg' alt="" />
                     <h2 className='text-2xl xl:text-3xl font-mono font-bold'>{isAdmin ? "Organizer" : "Participant"}<br />Dashboard</h2>
                 </div>
                 <div className='flex flex-col gap-2 font-bold'>
@@ -101,12 +101,12 @@ const DashboardLayout = () => {
                     </ul>
                 </div>
                 <div className='flex items-center gap-2'>
-                    <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-xl' alt="" />
+                    <img src={icon} className='w-8 sm:w-10 xl:w-14 rounded-lg' alt="" />
                     <h2 className='text-2xl xl:text-3xl font-mono font-bold'>{isAdmin ? "Organizer" : "Participant"}<br />Dashboard</h2>
                 </div>
             </div>
             <div className='max-sm:my-10 max-sm:w-full sm:w-3/4 sm:px-10'>
-                <div className='flex items-center justify-between fixed z-10 sm:w-[calc(75%-80px)] right-10 top-10 max-sm:hidden mx-auto max-w-screen-2xl bg-slate-100 dark:bg-slate-800 p-3 rounded'>
+                <div className='flex items-center justify-between fixed z-10 sm:w-[calc(75%-80px)] right-10 top-10 max-sm:hidden mx-auto max-w-screen-2xl bg-slate-100 dark:bg-slate-800 p-3 rounded-lg'>
                     <h2 className='text-xl lg:text-2xl font-bold'>Welcome back, <span className='text-primary'>{user.displayName}</span></h2>
                     <div className='flex items-center'>
                         <div title={user.displayName} tabIndex={0} role="button" className="">

@@ -7,8 +7,8 @@ const Recent = ({ camp }) => {
     const currentDateISO = new Date().toISOString();
     const difference = Math.abs(moment(camp.time).diff(moment(currentDateISO), 'days'));
     return (
-        <div className='p-5 shadow flex flex-col items-center text-center rounded-xl'>
-            <img className='h-32 rounded-xl' src={camp.photoURL} alt="camp" />
+        <div className='p-5 shadow flex flex-col items-center text-center rounded-lg'>
+            <img className='h-32 rounded-lg' src={camp.photoURL} alt="camp" />
             <div className='flex flex-col justify-between h-[18vh]'>
                 <p className={`text-xl font-sans font-bold text-pr text-primary`}>{camp.name}</p>
                 <div className='self-end'>

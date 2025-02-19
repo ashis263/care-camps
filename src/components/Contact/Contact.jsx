@@ -51,7 +51,7 @@ const Contact = () => {
                 <p className="max-sm:text-center p-2">We&apos;d love to hear from you</p>
                 <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl max-sm:text-center'>Contact Us</h2>
             </div>
-            <div className="sm:flex justify-between p-5 shadow-lg dark:shadow-xl rounded-xl">
+            <div className="sm:flex justify-between p-5 shadow-lg dark:shadow-xl rounded-lg">
                 <div className="sm:w-3/5">
                     <form onSubmit={handleSubmit} id="education" data-aos="fade-in" data-aos-duration="2000" className="space-y-5">
                         <div className="form-control">

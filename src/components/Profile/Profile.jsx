@@ -63,8 +63,8 @@ const AdminProfile = () => {
             <div>
                 <h2 className='font-bold text-4xl sm:text-5xl text-primary sm:mt-10'>Profile</h2>
             </div>
-            <div className='flex max-sm:flex-col items-center max-sm:text-center sm:mt-14 gap-10 lg:gap-20 sm:w-3/4 mx-auto p-5 shadow-md shadow-primary rounded-xl mt-20 justify-center sm:py-14 lg:py-20'>
-                <img className='w-2/5 sm:w-2/5 xl:w-1/5 rounded-full sm:rounded-xl shadow-2xl max-sm:-mt-20 border' src={user.photoURL} alt="" />
+            <div className='flex max-sm:flex-col items-center max-sm:text-center sm:mt-14 gap-10 lg:gap-20 sm:w-3/4 mx-auto p-5 shadow-md shadow-primary rounded-lg mt-20 justify-center sm:py-14 lg:py-20'>
+                <img className='w-2/5 sm:w-2/5 xl:w-1/5 rounded-full sm:rounded-lg shadow-2xl max-sm:-mt-20 border' src={user.photoURL} alt="" />
                 <div className=''>
                     <div className='flex flex-col gap-14 sm:place-items-end justify-center'>
                         <div className='sm:text-end'>

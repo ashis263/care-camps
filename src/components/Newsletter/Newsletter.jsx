@@ -41,7 +41,7 @@ const NewsLetter = () => {
             })
     }
     return (
-        <div className="rounded-xl shadow-lg dark:shadow-primary p-5 sm:flex justify-between">
+        <div className="rounded-lg shadow-lg dark:shadow-primary p-5 sm:flex justify-between">
             <div className='w-2/5 xl:w-1/3 max-sm:hidden'>
                 <img src={newsletter} alt="" />
             </div>

@@ -74,7 +74,7 @@ const CampDetails = () => {
                 <title>Camp Details</title>
             </Helmet>
             <h2 className='animate__animated animate__fadeIn font-bold text-3xl sm:text-5xl text-primary max-lg:text-center lg:text-center drop-shadow'>{name}</h2>
-            <div className='w-3/5 mx-auto flex flex-col justify-between p-5 items-center gap-2 self-stretch rounded-xl my-5 sm:my-10'>
+            <div className='w-3/5 mx-auto flex flex-col justify-between p-5 items-center gap-2 self-stretch rounded-lg my-5 sm:my-10'>
                 <div className="w-full text-center space-y-5">
                     <div className="flex justify-center">
                         <img className='border sm:h-52' src={photoURL} alt="camp photo" />

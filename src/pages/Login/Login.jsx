@@ -62,7 +62,7 @@ const Login = () => {
                 <title>Login</title>
             </Helmet>
             <div className="flex flex-col animate__animated animate__fadeIn">
-                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 p-10 rounded-xl shadow">
+                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 p-10 rounded-lg shadow">
                     <p className="text-center text-2xl font-semibold mb-5">Welcome back!</p>
                     <p className="text-gray-400 text-center mb-2">Login with google account</p>
                     <Social></Social>

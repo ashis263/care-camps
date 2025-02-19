@@ -12,7 +12,7 @@ const RecentCamps = ({ doctors, isPending }) => {
                 <h2 className='font-bold text-primary text-2xl sm:text-3xl lg:text-5xl drop-shadow-2xl text-center'>Latest Camps</h2>
                 <p className="text-center py-2">Recently added camps</p>
             </div>
-            <div className="rounded-xl">
+            <div className="rounded-lg">
                 {
                     isPending
                     &&

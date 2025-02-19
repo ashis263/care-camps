@@ -57,33 +57,33 @@ const AdminOverview = () => {
                     </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-5 mb-5 sm:mb-10 flex-wrap items-center justify-center">
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Total Camps</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">{regStat.totalCamps} camps</p>
                     </div>
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Total Participants</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">{regStat.totalParticipants} camps</p>
                     </div>
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Total Revenue</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">
                             {sum}$
                         </p>
                     </div>
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Paid Participants</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">
                             {stat.payments.length}
                         </p>
                     </div>
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Confirmed Participants</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">
                             {confirmed}
                         </p>
                     </div>
-                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-xl shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
+                    <div className="p-5 flex flex-col justify-center items-center text-center sm:w-1/4 rounded-lg shadow-lg shadow-primary w-full sm:h-28 lg:h-20">
                         <p className="">Pending Participants</p>
                         <p className="text-primary font-bold text-xl lg:text-2xl">
                             {regStat.totalParticipants - confirmed}

@@ -85,7 +85,7 @@ const Register = () => {
                 <title>Register</title>
             </Helmet>
             <div className="flex flex-col mb-10">
-                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 bg-white p-10 rounded-xl shadow">
+                <form onSubmit={handleSubmit(submitForm)} className="w-11/12 mx-auto dark:bg-slate-800 bg-white p-10 rounded-lg shadow">
                     <p className="text-center text-2xl font-semibold">Register</p>
                     <p className="text-gray-400 text-center mb-2">Register with email and password</p>
                     <div className="form-control">

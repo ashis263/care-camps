@@ -10,12 +10,12 @@ const About = () => {
                     <p className=" text-gray-700 dark:text-gray-400 sm:text-justify">Camps works to bridge the gap in healthcare by organizing impactful medical camps that deliver quality care to various communities. From preventive screenings to life-saving treatments, our camps are designed to inspire hope and transform lives.</p>
                 </div>
                 <div className="sm:w-2/5 flex justify-center sm:justify-end">
-                    <img className='w-4/5 rounded-xl' src={us} alt="people cheering" />
+                    <img className='w-4/5 rounded-lg' src={us} alt="people cheering" />
                 </div>
             </div>
             <div className="w-11/12 mx-auto flex max-sm:flex-col justify-between items-center">
                 <div className="sm:w-2/5 flex justify-center sm:justify-start">
-                    <img className='w-4/5 rounded-xl' src={mission} alt="people cheering" />
+                    <img className='w-4/5 rounded-lg' src={mission} alt="people cheering" />
                 </div>
                 <div className="sm:w-2/5 max-sm:text-center">
                     <h1 className="text-2xl sm:text-4xl font-bold text-primary lg:text-6xl drop-shadow-2xl">Our Mission</h1>
