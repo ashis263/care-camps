@@ -47,7 +47,7 @@ const Navbar = () => {
         return <Spinner></Spinner>
     } else {
         return (
-            <div className="bg-slate-100 dark:bg-slate-800 shadow-sm dark:shadow-lg fixed w-full max-w-screen-2xl mx-auto z-10 backdrop-blur-xl">
+            <div className="shadow-sm dark:shadow-lg max-lg:bg-slate-100 fixed w-full max-w-screen-2xl mx-auto z-10 backdrop-blur-xl">
                 <div className="navbar w-11/12 mx-auto p-0">
                     <div className="navbar-start">
                         <div className="dropdown max-lg:mr-2 max-lg:pt-[1px]">

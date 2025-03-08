@@ -13,7 +13,7 @@ const Camp = ({ camp }) => {
     const currentLocation = useLocation().pathname;
     const dateTimeString = moment(dateTime).format('ddd MMM DD YYYY,  h:mm:ss A');
     return (
-        <div className={`${currentLocation === '/' ? 'justify-center text-center' : ''} flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full rounded-lg dark:shadow-primary`}>
+        <div className={`shadow-primary ${currentLocation === '/' ? 'justify-center text-center' : ''} flex flex-col justify-between p-5 items-center shadow gap-2 self-stretch w-full rounded-lg dark:shadow-primary`}>
             <div>
                 <img className='border h-32 rounded-lg' src={photoURL} alt="camp photo" />
             </div>
